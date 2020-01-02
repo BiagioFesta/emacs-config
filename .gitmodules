@@ -1,0 +1,6 @@
+[submodule "etc/ext-packages/vline"]
+	path = etc/ext-packages/vline
+	url = https://github.com/emacsmirror/vline.git
+[submodule "etc/ext-packages/col-highlight"]
+	path = etc/ext-packages/col-highlight
+	url = https://github.com/emacsmirror/col-highlight.git

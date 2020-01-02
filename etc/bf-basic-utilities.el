@@ -1,0 +1,74 @@
+;;; bf-basic-utilities.el --- Emacs Configuration
+;;; Commentary:
+;;;   Define simple function utilities.
+;;;   Those function will be defined before packages initialization!
+
+;;; Code:
+
+(defun bf-basic-utilities-assert-emacs-version ()
+  "Throw an error in case the current Emacs version is not supported."
+  (unless (version< "27" emacs-version)
+    (error "This configuration is meant to be used with Emacs version >= 27")))
+
+(defun bf-copyfilepath()
+  "Insert the FilePath into the kill ring."
+  (interactive)
+  (kill-new (concat default-directory (buffer-name))))
+
+(defun bf-basic-utilities-find-compilation-database (DIRECTORY)
+  "Recursively scan  DIRECTORY in order to find the compilation database.
+The compilation database is a file named 'compile_commands.json'
+Returns the filename if found, nil otherwise."
+  (if (not (and (file-exists-p DIRECTORY) (file-directory-p DIRECTORY)))
+      (error "Directory does not exist: %s" DIRECTORY))
+  (message (format "Scan directory '%s'" DIRECTORY))
+  (let* ((compilation-db-filename "compile_commands.json")
+         (compilation-db-file (directory-files DIRECTORY t compilation-db-filename)))
+    (if compilation-db-file
+        (car compilation-db-file)
+      (let ((all-dirs (seq-filter 'file-directory-p (directory-files DIRECTORY t ".*[^(\\.\\.)(\\.)]$")))
+            (db-found nil))
+        (while (and (not db-found) all-dirs)
+          (let ((db-indir (bf-basic-utilities-find-compilation-database (car all-dirs))))
+            (if db-indir (setq db-found db-indir) (setq all-dirs (cdr all-dirs)))))
+        db-found))))
+
+(defun bf-create-link-to-compilation-db (COMPILATION-DATABASE &optional PROJECT_ROOT_DIR)
+  "Create a symbolic-link to the file COMPILATION-DATABASE.
+When PROJECT_ROOT_DIR is omitted, it tries to retrieve the project root
+directory from the Projectile settings.
+In case Projectile is missing or the root directory is not available,
+the function will prompt the user in order to provide the root project
+directory."
+  (interactive (let ((compilation-db-found
+                      (if (and (boundp 'projectile-project-root) (projectile-project-root))
+                          (bf-basic-utilities-find-compilation-database (projectile-project-root)))))
+                 (list (read-file-name
+                        "Compilation database: "
+                        compilation-db-found
+                        "compile_commands.json"
+                        t)
+                       nil)))
+  (unless PROJECT_ROOT_DIR
+    (setq PROJECT_ROOT_DIR
+          (if (and (boundp 'projectile-project-root) (projectile-project-root))
+              (projectile-project-root)
+            (read-directory-name "Project root directory: "))))
+  (let* ((compilation-db-filename "compile_commands.json")
+         (target-db-link (concat PROJECT_ROOT_DIR compilation-db-filename)))
+    (cond
+     ((not (file-exists-p PROJECT_ROOT_DIR))
+      (error (format "The project root directory does not exist: %s" PROJECT_ROOT_DIR)))
+     ((not (file-directory-p PROJECT_ROOT_DIR))
+      (error (format "The project root directory is not a directory: %s" PROJECT_ROOT_DIR)))
+     ((not (file-exists-p COMPILATION-DATABASE))
+      (error (format "The compilation database does not exist: %s" COMPILATION-DATABASE)))
+     ((not (string-equal (file-name-nondirectory COMPILATION-DATABASE) compilation-db-filename))
+      (error (format "The compilation database file is not correct: %s" COMPILATION-DATABASE)))
+     ((file-exists-p target-db-link)
+      (error (format "The compilation database is already present in the project root: %s" target-db-link))))
+    (f-symlink COMPILATION-DATABASE target-db-link)
+    (message (format "Link to the compilation database created: %s" target-db-link))))
+
+(provide 'bf-basic-utilities)
+;;; bf-basic-utilities.el ends here
