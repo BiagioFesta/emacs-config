@@ -5,11 +5,6 @@
 
 ;;; Code:
 
-(defun bf-basic-utilities-assert-emacs-version ()
-  "Throw an error in case the current Emacs version is not supported."
-  (unless (version< "27" emacs-version)
-    (error "This configuration is meant to be used with Emacs version >= 27")))
-
 (defun bf-copyfilepath()
   "Insert the FilePath into the kill ring."
   (interactive)
