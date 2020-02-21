@@ -138,6 +138,7 @@ To control this configuration use the variable
   (setq split-width-threshold 180)
   (put 'upcase-region 'disabled nil)
   (setq-default fill-column 80)
+  (setq ring-bell-function 'ignore)
   nil)
 
 (provide 'bf-config-general-settings)
