@@ -16,8 +16,8 @@
       (use-package ccls
         :ensure t
         :init
-        (if bf-config-cpp-ccls-executable
-            (setq ccls-executable bf-config-cpp-ccls-executable)))))
+        (when bf-config-cpp-ccls-executable
+          (setq ccls-executable bf-config-cpp-ccls-executable)))))
 
 (defun bf-config-cpp--google-c-style ()
   "Install and configure package `google-c-style'."
