@@ -78,7 +78,15 @@
     :after ivy
     :diminish
     :config
-    (counsel-mode 1)))
+    (counsel-mode 1)
+    (add-hook 'find-file-hook
+              (lambda ()
+                (let ((max-size bf-config-general-settings-size-big-file))
+                  (when (> (buffer-size) max-size)
+                    (let ((map (make-sparse-keymap)))
+                      (set-keymap-parent map (current-local-map))
+                      (use-local-map map)
+                      (local-set-key [remap swiper] 'counsel-grep))))))))
 
 (defun bf-config-basic-packages--windmove ()
   "Install and configure package `windmove'."
