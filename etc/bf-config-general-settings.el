@@ -8,6 +8,7 @@
 (require 'bf-custom-vars)
 (require 'compile)
 (require 'gdb-mi)
+(require 'ansi-color)
 
 (defun bf-config-general-settings--config-bar()
   "Configure general bars."
@@ -111,6 +112,12 @@ To control this configuration use the variable
   "Set the global key bindings."
   (global-set-key (kbd "<f5>") 'revert-buffer))
 
+(defun bf-config-general-settings--enable-compilation-buffer-colors ()
+  "Enable ANSI color in the *compilation* buffer."
+  (add-hook 'compilation-filter-hook
+            (lambda ()
+              (ansi-color-apply-on-region compilation-filter-start (point)))))
+
 (defun bf-config-general-settings ()
   "Apply all general configuration settings."
   (setq inhibit-startup-screen t)
@@ -123,6 +130,7 @@ To control this configuration use the variable
   (bf-config-general-settings--config-column-indicator)
   (bf-config-general-settings--auto-revert-mode)
   (bf-config-general-settings--global-keybind)
+  (bf-config-general-settings--enable-compilation-buffer-colors)
   (show-paren-mode 1)
   (delete-selection-mode 1)
   (put 'narrow-to-region 'disabled nil)
