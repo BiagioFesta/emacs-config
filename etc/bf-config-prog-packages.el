@@ -95,6 +95,7 @@
     :ensure t
     :init
     (setq lsp-prefer-flymake nil)
+    (setq lsp-keymap-prefix "C-c l")
     :config
     (let ((lsp-hooks '(c++-mode-hook
                        c-mode-hook
@@ -104,11 +105,8 @@
         (funcall action hook 'lsp))))
   (use-package lsp-ui
     :ensure t
-    :after lsp
     :init
     (setq lsp-ui-sideline-enable nil)
-    :hook
-    (lsp-mode . lsp-ui-mode)
     :bind
     ("C-c /" . lsp-ui-peek-find-references))
   (use-package company-lsp
