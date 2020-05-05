@@ -27,13 +27,27 @@ In accordance with the archives defined in the list
       (let ((archive-url (concat proto "://" archive-uri)))
         (push (cons archive-name archive-url) package-archives)))))
 
+(defun bf-config-packages-install-dependencies()
+  "Install packages needed for the configuration."
+  (let ((list-deps '(use-package
+                     f
+                     seq
+                     projectile
+                     saveplace
+                     compile
+                     gdb-mi
+                     ansi-color
+                     doom-modeline)))
+    (dolist (package list-deps)
+      (bf-install-package-if-missing package))))
+
 (defun bf-config-packages-management()
   "Apply and configure package management."
   (bf-config-packages-management--set-archives)
   (package-initialize)
   (unless package-archive-contents
     (package-refresh-contents))
-  (bf-install-package-if-missing 'use-package))
+  (bf-config-packages-install-dependencies))
 
 (provide 'bf-config-packages-management)
 ;;; bf-config-packages-management.el ends here

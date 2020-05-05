@@ -5,7 +5,7 @@
 ;;; Code:
 (require 'bf-custom-vars)
 (require 'bf-config-packages-management)
-(require 'doom-modeline nil t)
+(require 'doom-modeline)
 
 (defvar bf-config-themes-list-custom-presets nil
   "A list of custom presets can be loaded.")
@@ -65,7 +65,7 @@ Moreover sets customization."
   "Load the preset 'monokai'."
   (bf-config-themes-disable-all-themes)
   (load-theme 'monokai t)
-  (bf-config-themes--set-frame-font-if-possible "Inconsolata-10")
+  (bf-config-themes--set-frame-font-if-possible "Ubuntu Mono-10")
   (set-face-background 'hl-line "black"))
 
 (defun bf-config-themes--Doom-preset ()

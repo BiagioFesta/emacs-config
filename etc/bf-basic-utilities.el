@@ -4,6 +4,9 @@
 ;;;   Those function will be defined before packages initialization!
 
 ;;; Code:
+(require 'seq)
+(require 'f)
+(require 'projectile)
 
 (defun bf-copyfilepath()
   "Insert the FilePath into the kill ring."
@@ -64,6 +67,53 @@ directory."
       (error (format "The compilation database is already present in the project root: %s" target-db-link))))
     (f-symlink COMPILATION-DATABASE target-db-link)
     (message (format "Link to the compilation database created: %s" target-db-link))))
+
+(defun bf-compile-cpp-cmake (GENERATOR COMPILER BUILD_TYPE PROJECT_ROOT BUILD_DIR)
+  "Inizialize a CMake compilation for a project.
+GENERATOR should be a string: 'default', 'makefile' or 'ninja'.
+
+COMPILER should be a string: 'default', 'gcc' or 'clang'.
+
+BUILD_TYPE should be a string: 'default', 'debug' or 'release'.
+
+PROJECT_ROOT is an esisting directory, the root of the project.
+Where CMakeLists.txt is present.
+
+BUILD_DIR is a directory where the project will be compiled.
+If the directory does not exist it will be created.
+Moreover, if it does exist then the CMake cache file will be deleted in order
+to start a  new fresh configuration."
+  (interactive
+   (list (completing-read "Generator: " '("default" "makefile" "ninja") nil t)
+         (completing-read "Compiler: " '("default" "gcc" "clang") nil t)
+         (completing-read "Build Type: " '("default" "debug" "release") nil t)
+         (read-directory-name "Project Directory: " (projectile-project-root) nil t)
+         (read-directory-name "Build Directory: " (concat (projectile-project-root) "build"))))
+  (let ((cmake-cache-file (concat BUILD_DIR "/" "CMakeCache.txt")))
+    (if (file-directory-p BUILD_DIR)
+        (when (file-exists-p cmake-cache-file) (delete-file cmake-cache-file))
+      (make-directory BUILD_DIR)))
+  (let ((cmake-bin "cmake")
+        (generator (cond ((string= GENERATOR "makefile") "Unix Makefile")
+                         ((string= GENERATOR "ninja") "Ninja")))
+        (build-type (cond ((string= BUILD_TYPE "debug") "Debug")
+                          ((string= BUILD_TYPE "release") "Release")))
+        (cc (cond ((string= COMPILER "gcc") "-DCMAKE_C_COMPILER=\"gcc\" -DCMAKE_CXX_COMPILER=\"g++\"")
+                  ((string= COMPILER "clang") "-DCMAKE_C_COMPILER=\"clang\" -DCMAKE_CXX_COMPILER=\"clang++\"")))
+        (extra-flags (when (or (string= COMPILER "gcc") (string= COMPILER "clang"))
+                       (cond ((string= BUILD_TYPE "debug") "-Wall -Wextra -pedantic -fsanitize=undefined")
+                             ((string= BUILD_TYPE "release") "")))))
+    (let ((cmake-shell-cmd
+           (mapconcat 'identity (list cmake-bin
+                                      (when generator (format "-G\"%s\"" generator))
+                                      (when build-type (format "-DCMAKE_BUILD_TYPE=\"%s\"" build-type))
+                                      cc
+                                      "-DCMAKE_EXPORT_COMPILE_COMMANDS=YES"
+                                      (when extra-flags (format "-DCMAKE_C_FLAGS=\"%s\" -DCMAKE_CXX_FLAGS=\"%s\""
+                                                                extra-flags extra-flags))
+                                      PROJECT_ROOT)
+                      " ")))
+      (compile (format "cd %s && %s && %s --build ." BUILD_DIR cmake-shell-cmd cmake-bin)))))
 
 (provide 'bf-basic-utilities)
 ;;; bf-basic-utilities.el ends here
