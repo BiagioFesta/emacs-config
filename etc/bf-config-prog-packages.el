@@ -168,6 +168,11 @@
     :bind
     ("C-\\" . column-highlight-mode)))
 
+(defun bf-config-prog-packages--docker-file-mode ()
+  "Install and configure package `dockerfile-mode'."
+  (use-package dockerfile-mode
+    :ensure t))
+
 (defun bf-config-prog-packages ()
   "Install and configure all programming packages."
   (bf-config-prog-packages--projectile)
@@ -184,6 +189,7 @@
   (bf-config-prog-packages--smartparens)
   (bf-config-prog-packages--neotree)
   (bf-config-prog-packages--col-highlight)
+  (bf-config-prog-packages--docker-file-mode)
   nil)
 
 
