@@ -37,7 +37,7 @@
     :ensure t
     :diminish
     :hook
-    ((prog-mode gud-mode) . company-mode)
+    ((prog-mode gud-mode inferior-python-mode) . company-mode)
     :config
     (progn
       (define-key company-active-map (kbd "C-n") 'company-select-next)
