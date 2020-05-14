@@ -5,10 +5,18 @@
 ;;; Code:
 (require 'use-package)
 (require 'bf-custom-vars)
+(require 'bf-config-prog-packages)
 
-(defun bf-config-cpp--config-abrbev-mode ()
+(defun bf-config-cpp--config-abbrev-mode ()
   "Configure the function `abbrev-mode'."
   (add-hook 'c-mode-common-hook #'(lambda () (abbrev-mode -1))))
+
+(defun bf-config-cpp--lsp ()
+  "Configure LSP for C/C++ modes."
+  (let ((enable (and (not bf-config-minimal-config)
+                     bf-config-cpp-use-lsp)))
+    (bf-config-prog-packages--lsp-config-hook 'c-mode-hook enable)
+    (bf-config-prog-packages--lsp-config-hook 'c++-mode-hook enable)))
 
 (defun bf-config-cpp--ccls ()
   "Install and configure package `ccls'."
@@ -55,7 +63,8 @@
 
 (defun bf-config-cpp ()
   "Setup environment for mode C and C++."
-  (bf-config-cpp--config-abrbev-mode)
+  (bf-config-cpp--config-abbrev-mode)
+  (bf-config-cpp--lsp)
   (bf-config-cpp--ccls)
   (bf-config-cpp--google-c-style)
   (bf-config-cpp--modern-cpp-font-lock)

@@ -28,11 +28,17 @@
   (bf-config-cpp)
   (bf-config-python))
 
-(defun bf-config-set-load-min-config()
+(defun bf-config-reload-with-min-config ()
   "Set the variable `bf-config-minimal-config' to t.
 Afterward reload the configuration."
   (interactive)
   (setq bf-config-minimal-config t)
+  (bf-config-load-config))
+
+(defun bf-config-reload-config ()
+  "Interactive function for `bf-config-load-config'.
+Reloads the configuration."
+  (interactive)
   (bf-config-load-config))
 
 (bf-config-load-config)

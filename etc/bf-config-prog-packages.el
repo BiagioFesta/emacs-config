@@ -95,13 +95,7 @@
     :ensure t
     :init
     (setq lsp-prefer-flymake nil)
-    (setq lsp-keymap-prefix "C-c l")
-    :config
-    (let ((lsp-hooks '(c++-mode-hook
-                       c-mode-hook))
-          (action (if bf-config-minimal-config #'remove-hook #'add-hook)))
-      (dolist (hook lsp-hooks)
-        (funcall action hook 'lsp))))
+    (setq lsp-keymap-prefix "C-c l"))
   (use-package lsp-ui
     :ensure t
     :init
@@ -114,6 +108,14 @@
     (push 'company-lsp company-backends)
     :bind
     ("C-M-\\" . company-lsp)))
+
+(defun bf-config-prog-packages--lsp-config-hook (hook enable)
+  "Enable or disable lsp function to HOOK.
+HOOK is the hook to bind the `lsp' function.
+ENABLE is a boolean (t or nil) which specifies if add or remove from the hook."
+  (if enable
+      (add-hook hook 'lsp)
+    (remove-hook hook 'lsp)))
 
 (defun bf-config-prog-packages--eldoc ()
   "Install and configure package `eldoc'."

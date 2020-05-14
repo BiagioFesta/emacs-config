@@ -47,11 +47,20 @@ See `bf-config-themes-list-custom-presets' for a list of preset-themes.")
 (defvar bf-config-general-settings-size-big-file (* 1024 1024)
   "Define the size of a big file in terms of num of chars.")
 
+(defvar bf-config-cpp-use-lsp t
+  "Enable LSP for C/C++ modes.")
+
 (defvar bf-config-cpp-use-ccls t
   "Enable ccls (C++ client) for LSP.")
 
 (defvar bf-config-cpp-ccls-executable "/usr/bin/ccls"
   "Path for binary ccls (C++ client for LSP).")
+
+(defvar bf-config-python-use-lsp nil
+  "Enable LSP for python mode.")
+
+(defvar bf-config-python-use-jedi t
+  "Use JEDI for python mode.")
 
 (provide 'bf-custom-vars)
 ;;; bf-custom-vars.el ends here
