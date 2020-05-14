@@ -98,8 +98,7 @@
     (setq lsp-keymap-prefix "C-c l")
     :config
     (let ((lsp-hooks '(c++-mode-hook
-                       c-mode-hook
-                       python-mode-hook))
+                       c-mode-hook))
           (action (if bf-config-minimal-config #'remove-hook #'add-hook)))
       (dolist (hook lsp-hooks)
         (funcall action hook 'lsp))))
