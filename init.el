@@ -18,6 +18,7 @@
 (require 'bf-config-prog-packages)
 (require 'bf-config-cpp)
 (require 'bf-config-python)
+(require 'bf-config-org-mode)
 
 (defun bf-config-load-config ()
   "Load the configuration."
@@ -26,7 +27,8 @@
   (bf-config-basic-packages)
   (bf-config-prog-packages)
   (bf-config-cpp)
-  (bf-config-python))
+  (bf-config-python)
+  (bf-config-org-mode))
 
 (defun bf-config-reload-with-min-config ()
   "Set the variable `bf-config-minimal-config' to t.
