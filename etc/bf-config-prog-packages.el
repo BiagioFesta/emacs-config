@@ -147,7 +147,7 @@ ENABLE is a boolean (t or nil) which specifies if add or remove from the hook."
     (setq sp-autodelete-pair nil)
     (setq sp-escape-quotes-after-insert nil)
     :hook
-    ((prog-mode . smartparens-mode))))
+    (prog-mode . smartparens-mode)))
 
 (defun bf-config-prog-packages--neotree ()
   "Install and configure package `neotree'."
