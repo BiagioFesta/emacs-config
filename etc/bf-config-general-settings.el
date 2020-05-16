@@ -9,6 +9,7 @@
 (require 'compile)
 (require 'gdb-mi)
 (require 'ansi-color)
+(require 'scroll-bar)
 
 (defun bf-config-general-settings--config-bar()
   "Configure general bars."
