@@ -174,6 +174,18 @@ ENABLE is a boolean (t or nil) which specifies if add or remove from the hook."
   (use-package dockerfile-mode
     :ensure t))
 
+(defun bf-config-prog-packages--origami ()
+  "Install and configure package `origami'."
+  (use-package origami
+    :ensure t
+    :bind
+    (:map origami-mode-map
+          ("C-c o t" . origami-toggle-node)
+          ("C-c o r" . origami-reset)
+          ("C-c o s" . origami-show-only-node))
+    :hook
+    (prog-mode . origami-mode)))
+
 (defun bf-config-prog-packages ()
   "Install and configure all programming packages."
   (bf-config-prog-packages--projectile)
@@ -191,6 +203,7 @@ ENABLE is a boolean (t or nil) which specifies if add or remove from the hook."
   (bf-config-prog-packages--neotree)
   (bf-config-prog-packages--col-highlight)
   (bf-config-prog-packages--docker-file-mode)
+  (bf-config-prog-packages--origami)
   nil)
 
 
