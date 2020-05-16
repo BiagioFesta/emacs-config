@@ -105,7 +105,9 @@
     :init
     (setq xclip-method 'xsel)
     :config
-    (xclip-mode 1)))
+    (if (executable-find "xsel")
+        (xclip-mode 1)
+      (warn "xsel program not found."))))
 
 (defun bf-config-basic-packages--goto-line-preview ()
   "Install and configure package `goto-line-preview'."
