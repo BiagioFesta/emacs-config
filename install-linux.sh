@@ -1,4 +1,4 @@
-#/bin/env bash
+#!/usr/bin/env bash
 EMACS_HOME=${HOME}/.emacs.d
 EMACS_BIN=$(which emacs)
 
