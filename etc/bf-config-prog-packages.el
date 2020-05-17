@@ -180,7 +180,7 @@ ENABLE is a boolean (t or nil) which specifies if add or remove from the hook."
     :ensure t
     :bind
     (:map origami-mode-map
-          ("C-c o t" . origami-toggle-node)
+          ("C-c o o" . origami-recursively-toggle-node)
           ("C-c o r" . origami-reset)
           ("C-c o s" . origami-show-only-node))
     :hook
