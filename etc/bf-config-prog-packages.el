@@ -104,6 +104,7 @@
     ("C-c /" . lsp-ui-peek-find-references))
   (use-package company-lsp
     :ensure t
+    :after company
     :config
     (push 'company-lsp company-backends)
     :bind

@@ -28,6 +28,7 @@
   (when bf-config-python-use-jedi
     (use-package company-jedi
       :ensure t
+      :after company
       :init
       (setq jedi:use-shortcuts t)
       :config
