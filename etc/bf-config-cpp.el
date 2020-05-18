@@ -44,7 +44,7 @@
     (c++-mode . modern-c++-font-lock-mode)))
 
 (defun bf-config-cpp--clang-format ()
-  "Install and configure package `clang-fromat'."
+  "Install and configure package `clang-format'."
   (use-package clang-format
     :ensure t
     :init
