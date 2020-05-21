@@ -115,5 +115,16 @@ to start a  new fresh configuration."
                       " ")))
       (compile (format "cd %s && %s && %s --build ." BUILD_DIR cmake-shell-cmd cmake-bin)))))
 
+(defun bf-basic-utilities-transpose-line-up ()
+  "Transpose the current line with the previous one."
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun bf-basic-utilities-transpose-line-down ()
+  "Transpose the current line with the following one."
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
 (provide 'bf-basic-utilities)
 ;;; bf-basic-utilities.el ends here
