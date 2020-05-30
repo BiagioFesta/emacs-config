@@ -49,17 +49,33 @@
     :ensure t
     :init
     (setq clang-format-executable "/usr/bin/clang-format")
-    (setq-default clang-format-style "{ BasedOnStyle: Google,
-                                        AlignAfterOpenBracket: Align,
-                                        AllowAllParametersOfDeclarationOnNextLine: false,
-                                        BinPackArguments: false,
-                                        BinPackParameters: false,
-                                        IncludeBlocks: Merge,
-                                        ColumnLimit: 80,
-                                        PointerAlignment: Left }")
     :hook
     ((c-mode c++-mode) . (lambda ()
                            (local-set-key (kbd "C-c TAB") 'clang-format-buffer)))))
+
+(defun bf-config-cpp-create-clang-format-file (project-dir)
+  "Create (or overwrite) the clang-format file in the project.
+PROJECT-DIR is the project directory."
+  (interactive (list (read-directory-name "Project Directory: "
+                                          (when (boundp 'projectile-project-root)
+                                            (projectile-project-root))
+                                          nil
+                                          t)))
+  (let ((cf-file ".clang-format")
+        (cf-style
+         "---
+Language: Cpp
+BasedOnStyle: Google
+AlignAfterOpenBracket: Align
+AllowAllParametersOfDeclarationOnNextLine: false
+BinPackArguments: false
+BinPackParameters: false
+IncludeBlocks: Merge
+ColumnLimit: 80
+PointerAlignment: Left
+...
+"))
+    (write-region cf-style nil (concat project-dir cf-file))))
 
 (defun bf-config-cpp ()
   "Setup environment for mode C and C++."
