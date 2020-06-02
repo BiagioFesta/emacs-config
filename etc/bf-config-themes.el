@@ -65,7 +65,7 @@ Moreover sets customization."
   "Load the preset 'monokai'."
   (bf-config-themes-disable-all-themes)
   (load-theme 'monokai t)
-  (bf-config-themes--set-frame-font-if-possible "Ubuntu Mono-10")
+  (bf-config-themes--set-frame-font-if-possible "Inconsolata 10")
   (set-face-background 'hl-line "black"))
 
 (defun bf-config-themes--Doom-preset ()
