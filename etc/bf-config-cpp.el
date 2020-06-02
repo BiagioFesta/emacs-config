@@ -73,6 +73,7 @@ BinPackParameters: false
 IncludeBlocks: Merge
 ColumnLimit: 80
 PointerAlignment: Left
+AllowShortFunctionsOnASingleLine: Empty
 ...
 "))
     (write-region cf-style nil (concat project-dir cf-file))))
