@@ -49,6 +49,7 @@
     :ensure t
     :init
     (setq clang-format-executable "/usr/bin/clang-format")
+    (setq clang-format-fallback-style "Google")
     :hook
     ((c-mode c++-mode) . (lambda ()
                            (local-set-key (kbd "C-c TAB") 'clang-format-buffer)))))
