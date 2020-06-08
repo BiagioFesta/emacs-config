@@ -34,6 +34,9 @@ Some packages will not be enabled.")
 (defvar bf-config-general-settings-column-indicator t
   "Enable highlight column rule on limit 80.")
 
+(defvar bf-config-general-settings-smooth-scrolling t
+  "Configure smooth scrolling.")
+
 (defvar bf-config-themes-custom-themes t
   "Enable configuration of custom themes.")
 

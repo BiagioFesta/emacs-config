@@ -119,6 +119,12 @@ To control this configuration use the variable
             (lambda ()
               (ansi-color-apply-on-region compilation-filter-start (point)))))
 
+(defun bf-config-general-settings--scroll-config ()
+  "Configure the settings for scrolling."
+  (if bf-config-general-settings-smooth-scrolling
+      (setq scroll-conservatively 101)
+    (setq scroll-conservatively 0)))
+
 (defun bf-config-general-settings ()
   "Apply all general configuration settings."
   (setq inhibit-startup-screen t)
@@ -132,6 +138,7 @@ To control this configuration use the variable
   (bf-config-general-settings--auto-revert-mode)
   (bf-config-general-settings--global-keybind)
   (bf-config-general-settings--enable-compilation-buffer-colors)
+  (bf-config-general-settings--scroll-config)
   (show-paren-mode 1)
   (delete-selection-mode 1)
   (put 'narrow-to-region 'disabled nil)
