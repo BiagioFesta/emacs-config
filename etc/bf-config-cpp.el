@@ -20,7 +20,7 @@
 
 (defun bf-config-cpp--ccls ()
   "Install and configure package `ccls'."
-  (if bf-config-cpp-use-ccls
+  (when bf-config-cpp-use-ccls
       (use-package ccls
         :ensure t
         :init
