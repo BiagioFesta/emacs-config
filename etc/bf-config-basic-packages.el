@@ -23,6 +23,7 @@
   "Install and configure package `undo-tree'."
   (use-package undo-tree
     :ensure t
+    :diminish
     :init
     (setq undo-tree-visualizer-diff t)
     :config
