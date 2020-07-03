@@ -94,7 +94,6 @@
   (use-package lsp-mode
     :ensure t
     :init
-    (setq lsp-prefer-flymake nil)
     (setq lsp-keymap-prefix "C-c l"))
   (use-package lsp-ui
     :ensure t
