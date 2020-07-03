@@ -39,6 +39,7 @@
     :hook
     ((prog-mode gud-mode inferior-python-mode) . company-mode)
     :config
+    (push 'company-capf company-backends)
     (progn
       (define-key company-active-map (kbd "C-n") 'company-select-next)
       (define-key company-active-map (kbd "C-p") 'company-select-previous))
@@ -82,8 +83,7 @@
 * `spinner';
 * `yasnippet';
 * `lsp-mode';
-* `lsp-ui';
-* `company-lsp'."
+* `lsp-ui'."
   (use-package spinner
     :ensure t)
   (use-package yasnippet
@@ -100,14 +100,7 @@
     :init
     (setq lsp-ui-sideline-enable nil)
     :bind
-    ("C-c /" . lsp-ui-peek-find-references))
-  (use-package company-lsp
-    :ensure t
-    :after company
-    :config
-    (push 'company-lsp company-backends)
-    :bind
-    ("C-M-\\" . company-lsp)))
+    ("C-c /" . lsp-ui-peek-find-references)))
 
 (defun bf-config-prog-packages--lsp-config-hook (hook enable)
   "Enable or disable lsp function to HOOK.
