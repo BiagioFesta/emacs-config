@@ -88,7 +88,9 @@
                     (let ((map (make-sparse-keymap)))
                       (set-keymap-parent map (current-local-map))
                       (use-local-map map)
-                      (local-set-key [remap swiper] 'counsel-grep))))))))
+                      (local-set-key [remap swiper] 'counsel-grep))))))
+    :bind
+    ("C-c C-u" . counsel-mark-ring)))
 
 (defun bf-config-basic-packages--windmove ()
   "Install and configure package `windmove'."
