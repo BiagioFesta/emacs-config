@@ -5,6 +5,8 @@
 
 ;;; Code:
 (require 'bf-config-vars)
+(require 'compile)
+(require 'gdb-mi)
 
 (defun bf-config--general-settings--config-backup-files ()
   "Configure backup files.
