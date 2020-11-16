@@ -33,6 +33,9 @@
 (defvar bf-config-general-settings-display-line-number nil
   "Enable display of line number on buffer side.")
 
+(defvar bf-config-general-settings-tab-width 2
+  "Simple wrapper for `tab-width'.")
+
 (defun bf-config--vars--validate-vars ()
   "Validate configuration variables.")
 

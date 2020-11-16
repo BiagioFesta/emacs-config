@@ -93,7 +93,7 @@ To control this configuration use the variable
   (setq gc-cons-threshold 20000000)
   (column-number-mode 1)
   (setq-default indent-tabs-mode nil)
-  (setq-default tab-width 2)
+  (setq-default tab-width bf-config-general-settings-tab-width)
   (setq compilation-scroll-output 'first-error)
   (setq gdb-display-io-nopopup t)
   (setq split-height-threshold nil)
