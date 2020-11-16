@@ -12,9 +12,12 @@
 (require 'bf-config-packages-management)
 (bf-config--packages-management)
 
+(require 'bf-config-general-settings)
+
 (defun bf-config--load-config ()
   "Load the entire configuration."
-  (bf-config--vars--validate-vars))
+  (bf-config--vars--validate-vars)
+  (bf-config--general-settings))
 
 (bf-config--load-config)
 ;;; init.el ends here
