@@ -12,7 +12,7 @@
     ("melpa" . "melpa.org/packages/"))
   "Associative list with repositories for packages download.")
 
-(defvar bf-config-general-settings-make-backups t
+(defvar bf-config-general-settings-make-backups nil
   "Enable backup files functionality.")
 
 (provide 'bf-config-vars)
