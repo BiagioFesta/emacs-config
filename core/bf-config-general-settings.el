@@ -39,10 +39,15 @@ big buffers."
     (remove-hook 'find-file-hook
                  #'bf-config--general-settings--lock-if-big-buffer)))
 
+(defun bf-config--general-settings--global-keybind ()
+  "Set the global key bindings."
+  (global-set-key (kbd "<f5>") 'revert-buffer))
+
 (defun bf-config--general-settings ()
   "Apply all general configuration settings."
   (bf-config--general-settings--config-backup-files)
-  (bf-config--general-settings--config-big-buffers))
+  (bf-config--general-settings--config-big-buffers)
+  (bf-config--general-settings--global-keybind))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
