@@ -43,12 +43,20 @@ big buffers."
   "Set the global key bindings."
   (global-set-key (kbd "<f5>") 'revert-buffer))
 
+(defun bf-config--general-settings--auto-revert-mode ()
+  "Configure auto-revert minor mode."
+  (when bf-config-general-settings-auto-revert-mode-interval
+    (setq-default auto-revert-interval bf-config-general-settings-auto-revert-mode-interval))
+  (if bf-config-general-settings-auto-revert-mode
+      (global-auto-revert-mode 1)
+    (global-auto-revert-mode -1)))
+
 (defun bf-config--general-settings ()
   "Apply all general configuration settings."
   (bf-config--general-settings--config-backup-files)
   (bf-config--general-settings--config-big-buffers)
   (bf-config--general-settings--global-keybind)
-  (global-auto-revert-mode 1))
+  (bf-config--general-settings--auto-revert-mode))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here

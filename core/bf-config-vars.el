@@ -21,5 +21,11 @@
 (defvar bf-config-general-settings-lock-big-files t
   "When file is too big, open in read-only mode.")
 
+(defvar bf-config-general-settings-auto-revert-mode nil
+  "Whether to enable the auto-revert mode globally.")
+
+(defvar bf-config-general-settings-auto-revert-mode-interval nil
+  "The auto-revert mode timer. It is a wrapper to `auto-revert-interval'.")
+
 (provide 'bf-config-vars)
 ;;; bf-config-vars.el ends here
