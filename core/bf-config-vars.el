@@ -15,5 +15,11 @@
 (defvar bf-config-general-settings-make-backups nil
   "Enable backup files functionality.")
 
+(defvar bf-config-general-settings-size-big-file 1048576
+  "Define the size of a big file in terms of num of chars.")
+
+(defvar bf-config-general-settings-lock-big-files t
+  "When file is too big, open in read-only mode.")
+
 (provide 'bf-config-vars)
 ;;; bf-config-vars.el ends here

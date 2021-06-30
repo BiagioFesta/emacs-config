@@ -22,9 +22,27 @@ to enable (t) or disable (nil) backup functionality."
         (setq make-backup-files t))
     (setq make-backup-files nil)))
 
+(defun bf-config--general-settings--lock-if-big-buffer ()
+  "If the current buffer's size is bigger than a threshold mark it read-only.
+Otherwise it does nothing."
+  (let ((max-size bf-config-general-settings-size-big-file))
+    (when (> (buffer-size) max-size)
+      (read-only-mode 1))))
+
+(defun bf-config--general-settings--config-big-buffers ()
+  "Configure 'big' buffers.
+The variable `bf-config-general-settings-size-big-file' defines the size of
+big buffers."
+  (if bf-config-general-settings-lock-big-files
+      (add-hook 'find-file-hook
+                #'bf-config--general-settings--lock-if-big-buffer)
+    (remove-hook 'find-file-hook
+                 #'bf-config--general-settings--lock-if-big-buffer)))
+
 (defun bf-config--general-settings ()
   "Apply all general configuration settings."
-  (bf-config--general-settings--config-backup-files))
+  (bf-config--general-settings--config-backup-files)
+  (bf-config--general-settings--config-big-buffers))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
