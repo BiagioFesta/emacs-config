@@ -57,7 +57,8 @@ big buffers."
   (bf-config--general-settings--config-big-buffers)
   (bf-config--general-settings--global-keybind)
   (bf-config--general-settings--auto-revert-mode)
-  (setq-default indent-tabs-mode nil))
+  (setq-default indent-tabs-mode nil)
+  (setq-default ring-bell-function 'ignore))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
