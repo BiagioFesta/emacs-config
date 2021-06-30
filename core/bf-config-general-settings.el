@@ -56,7 +56,8 @@ big buffers."
   (bf-config--general-settings--config-backup-files)
   (bf-config--general-settings--config-big-buffers)
   (bf-config--general-settings--global-keybind)
-  (bf-config--general-settings--auto-revert-mode))
+  (bf-config--general-settings--auto-revert-mode)
+  (setq-default indent-tabs-mode nil))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
