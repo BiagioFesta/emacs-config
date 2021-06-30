@@ -47,7 +47,8 @@ big buffers."
   "Apply all general configuration settings."
   (bf-config--general-settings--config-backup-files)
   (bf-config--general-settings--config-big-buffers)
-  (bf-config--general-settings--global-keybind))
+  (bf-config--general-settings--global-keybind)
+  (global-auto-revert-mode 1))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
