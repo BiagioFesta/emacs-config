@@ -58,7 +58,8 @@ big buffers."
   (bf-config--general-settings--global-keybind)
   (bf-config--general-settings--auto-revert-mode)
   (setq-default indent-tabs-mode nil)
-  (setq-default ring-bell-function 'ignore))
+  (setq-default ring-bell-function 'ignore)
+  (setq enable-recursive-minibuffers t))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
