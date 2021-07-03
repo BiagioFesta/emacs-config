@@ -70,6 +70,13 @@
     ("S-<up>" . windmove-up)
     ("S-<down>" . windmove-down)))
 
+(defun bf-config--general-packages--winner ()
+  "Install and configure `winner' package."
+  (use-package winner
+    :ensure t
+    :config
+    (winner-mode 1)))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -78,7 +85,8 @@
   (bf-config--general-packages--ace-window)
   (bf-config--general-packages--projectile)
   (bf-config--general-packages--magit)
-  (bf-config--general-packages--windmove))
+  (bf-config--general-packages--windmove)
+  (bf-config--general-packages--winner))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
