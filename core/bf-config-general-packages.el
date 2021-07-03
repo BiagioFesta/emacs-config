@@ -77,6 +77,17 @@
     :config
     (winner-mode 1)))
 
+(defun bf-config--general-packages--xclip ()
+  "Install and configure package `xclip'."
+  (use-package xclip
+    :ensure t
+    :config
+    (if (executable-find "xclip")
+        (progn
+          (setq xclip-method 'xclip)
+          (xclip-mode 1))
+      (warn "xsel program not found."))))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -86,7 +97,8 @@
   (bf-config--general-packages--projectile)
   (bf-config--general-packages--magit)
   (bf-config--general-packages--windmove)
-  (bf-config--general-packages--winner))
+  (bf-config--general-packages--winner)
+  (bf-config--general-packages--xclip))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
