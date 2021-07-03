@@ -13,10 +13,12 @@
 (bf-config--packages-management)
 
 (require 'bf-config-general-settings)
+(require 'bf-config-general-packages)
 
 (defun bf-config--load-config ()
   "Load the entire configuration."
-  (bf-config--general-settings))
+  (bf-config--general-settings)
+  (bf-config--general-packages))
 
 (bf-config--load-config)
 
