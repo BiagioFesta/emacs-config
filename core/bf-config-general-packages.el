@@ -37,12 +37,21 @@
     (when bf-config-general-packages-evil
       (evil-mode 1))))
 
+(defun bf-config--general-packages--ace-window ()
+  "Install and configure `ace-window' package."
+  (use-package ace-window
+    :ensure t
+    :init
+    (setq aw-ignore-current t)
+    :bind
+    ([remap other-window] . ace-window)))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
   (bf-config--general-packages--which-key)
   (bf-config--general-packages--undo-tree)
-  (bf-config--general-packages--evil-mode))
+  (bf-config--general-packages--ace-window))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
