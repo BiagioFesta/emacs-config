@@ -45,10 +45,11 @@ big buffers."
 
 (defun bf-config--general-settings--auto-revert-mode ()
   "Configure auto-revert minor mode."
-  (when bf-config-general-settings-auto-revert-mode-interval
-    (setq-default auto-revert-interval bf-config-general-settings-auto-revert-mode-interval))
   (if bf-config-general-settings-auto-revert-mode
-      (global-auto-revert-mode 1)
+      (progn
+        (when bf-config-general-settings-auto-revert-mode-interval
+          (setq-default auto-revert-interval bf-config-general-settings-auto-revert-mode-interval))
+        (global-auto-revert-mode 1))
     (global-auto-revert-mode -1)))
 
 (defun bf-config--general-settings ()
