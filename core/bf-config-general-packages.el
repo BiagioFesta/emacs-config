@@ -55,13 +55,19 @@
     (projectile-mode 1)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)))
 
+(defun bf-config--general-packages--magit ()
+  "Install and configure `magit' packages."
+  (use-package magit
+    :ensure t))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
   (bf-config--general-packages--which-key)
   (bf-config--general-packages--undo-tree)
   (bf-config--general-packages--ace-window)
-  (bf-config--general-packages--projectile))
+  (bf-config--general-packages--projectile)
+  (bf-config--general-packages--magit))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
