@@ -4,6 +4,7 @@
 
 ;;; Code:
 (require 'use-package)
+(require 'bf-config-vars)
 
 (defun bf-config--general-packages--dimish ()
   "Install and configure `dimish' package."
@@ -28,11 +29,20 @@
     :bind
     ("C-c z" . undo-tree-visualize)))
 
+(defun bf-config--general-packages--evil-mode ()
+  "Install and configure `evil' package."
+  (use-package evil
+    :ensure t
+    :config
+    (when bf-config-general-packages-evil
+      (evil-mode 1))))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
   (bf-config--general-packages--which-key)
-  (bf-config--general-packages--undo-tree))
+  (bf-config--general-packages--undo-tree)
+  (bf-config--general-packages--evil-mode))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here

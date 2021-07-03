@@ -27,5 +27,8 @@
 (defvar bf-config-general-settings-auto-revert-mode-interval nil
   "The auto-revert mode timer. It is a wrapper to `auto-revert-interval'.")
 
+(defvar bf-config-general-packages-evil nil
+  "Enable evil-mode.")
+
 (provide 'bf-config-vars)
 ;;; bf-config-vars.el ends here
