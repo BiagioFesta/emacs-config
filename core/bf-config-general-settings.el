@@ -60,7 +60,8 @@ big buffers."
   (setq-default indent-tabs-mode nil)
   (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
-  (setq confirm-kill-emacs 'y-or-n-p))
+  (setq confirm-kill-emacs 'y-or-n-p)
+  (setq gc-cons-threshold (* 100 1024 1024)))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
