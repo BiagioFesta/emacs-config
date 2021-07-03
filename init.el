@@ -10,12 +10,14 @@
 (bf-config--custom-vars)
 
 (require 'bf-config-packages-management)
+(bf-config--packages-management)
+
 (require 'bf-config-general-settings)
 
 (defun bf-config--load-config ()
   "Load the entire configuration."
-  (bf-config--packages-management)
   (bf-config--general-settings))
 
 (bf-config--load-config)
+
 ;;; init.el ends here
