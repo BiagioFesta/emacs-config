@@ -60,6 +60,16 @@
   (use-package magit
     :ensure t))
 
+(defun bf-config--general-packages--windmove ()
+  "Install and configure `windmove' package."
+  (use-package windmove
+    :ensure t
+    :bind
+    ("S-<right>" . windmove-right)
+    ("S-<left>" . windmove-left)
+    ("S-<up>" . windmove-up)
+    ("S-<down>" . windmove-down)))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -67,7 +77,8 @@
   (bf-config--general-packages--undo-tree)
   (bf-config--general-packages--ace-window)
   (bf-config--general-packages--projectile)
-  (bf-config--general-packages--magit))
+  (bf-config--general-packages--magit)
+  (bf-config--general-packages--windmove))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
