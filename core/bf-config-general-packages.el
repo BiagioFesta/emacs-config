@@ -110,6 +110,17 @@
     (("C-s" . swiper)
      ("M-s s" . swiper-thing-at-point))))
 
+(defun bf-config--general-packages--avy ()
+  "Install and configure package `avy'."
+  (use-package avy
+    :ensure t
+    :diminish
+    :config
+    (setq avy-background t)
+    :bind
+    ("C-c C-SPC" . avy-goto-char-timer)))
+
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -121,7 +132,8 @@
   (bf-config--general-packages--windmove)
   (bf-config--general-packages--winner)
   (bf-config--general-packages--xclip)
-  (bf-config--general-packages--ivy-counsel-swiper))
+  (bf-config--general-packages--ivy-counsel-swiper)
+  (bf-config--general-packages--avy))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
