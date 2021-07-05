@@ -88,6 +88,28 @@
           (xclip-mode 1))
       (warn "xsel program not found."))))
 
+(defun bf-config--general-packages--ivy-counsel-swiper ()
+  "Install and configure packages `ivy' `counsel' and `swiper'."
+  (use-package ivy
+    :ensure t
+    :diminish
+    :init
+    (setq ivy-count-format "(%d/%d) ")
+    :config
+    (ivy-mode 1))
+  (use-package counsel
+    :ensure t
+    :after ivy
+    :diminish
+    :config
+    (counsel-mode 1))
+  (use-package swiper
+    :ensure t
+    :after ivy
+    :bind
+    (("C-s" . swiper)
+     ("M-s s" . swiper-thing-at-point))))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -98,7 +120,8 @@
   (bf-config--general-packages--magit)
   (bf-config--general-packages--windmove)
   (bf-config--general-packages--winner)
-  (bf-config--general-packages--xclip))
+  (bf-config--general-packages--xclip)
+  (bf-config--general-packages--ivy-counsel-swiper))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
