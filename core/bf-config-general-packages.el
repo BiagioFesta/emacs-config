@@ -120,6 +120,12 @@
     :bind
     ("C-c C-SPC" . avy-goto-char-timer)))
 
+(defun bf-config--general-packages--multiple-cursors ()
+  "Install and configure package `multiple-cursors'."
+  (use-package multiple-cursors
+    :ensure t
+    :config
+    (setq mc/insert-numbers-default 1)))
 
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
@@ -133,7 +139,8 @@
   (bf-config--general-packages--winner)
   (bf-config--general-packages--xclip)
   (bf-config--general-packages--ivy-counsel-swiper)
-  (bf-config--general-packages--avy))
+  (bf-config--general-packages--avy)
+  (bf-config--general-packages--multiple-cursors))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
