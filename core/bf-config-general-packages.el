@@ -132,6 +132,7 @@
   (bf-config--general-packages--dimish)
   (bf-config--general-packages--which-key)
   (bf-config--general-packages--undo-tree)
+  (bf-config--general-packages--evil-mode)
   (bf-config--general-packages--ace-window)
   (bf-config--general-packages--projectile)
   (bf-config--general-packages--magit)
