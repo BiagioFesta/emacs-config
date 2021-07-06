@@ -148,6 +148,11 @@
     (setq flycheck-emacs-lisp-load-path 'inherit)
     (global-flycheck-mode)))
 
+(defun bf-config--general-packages--grammarly ()
+  "Install and configure package `grammarly'."
+  (use-package grammarly
+    :ensure t))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -165,7 +170,8 @@
   (bf-config--general-packages--multiple-cursors)
   (bf-config--general-packages--spinner)
   (bf-config--general-packages--yasnippet)
-  (bf-config--general-packages--flycheck))
+  (bf-config--general-packages--flycheck)
+  (bf-config--general-packages--grammarly))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
