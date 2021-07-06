@@ -132,6 +132,14 @@
   (use-package spinner
     :ensure t))
 
+(defun bf-config--general-packages--yasnippet ()
+  "Install and configure package `yasnippet'."
+  (use-package yasnippet
+    :ensure t
+    :diminish yas-minor-mode
+    :config
+    (yas-global-mode 1)))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -147,7 +155,8 @@
   (bf-config--general-packages--ivy-counsel-swiper)
   (bf-config--general-packages--avy)
   (bf-config--general-packages--multiple-cursors)
-  (bf-config--general-packages--spinner))
+  (bf-config--general-packages--spinner)
+  (bf-config--general-packages--yasnippet))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
