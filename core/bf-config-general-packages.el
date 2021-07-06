@@ -140,6 +140,14 @@
     :config
     (yas-global-mode 1)))
 
+(defun bf-config--general-packages--flycheck ()
+  "Install and configure package `flycheck'."
+  (use-package flycheck
+    :ensure t
+    :init
+    (setq flycheck-emacs-lisp-load-path 'inherit)
+    (global-flycheck-mode)))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -156,7 +164,8 @@
   (bf-config--general-packages--avy)
   (bf-config--general-packages--multiple-cursors)
   (bf-config--general-packages--spinner)
-  (bf-config--general-packages--yasnippet))
+  (bf-config--general-packages--yasnippet)
+  (bf-config--general-packages--flycheck))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
