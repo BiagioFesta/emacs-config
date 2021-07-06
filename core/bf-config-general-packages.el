@@ -153,6 +153,18 @@
   (use-package grammarly
     :ensure t))
 
+(defun bf-config--general-packages--lsp ()
+  "Install and configure package `lsp'."
+  (use-package lsp-mode
+    :ensure t
+    :after (spinner yasnippet)
+    :init
+    (setq lsp-keymap-prefix "C-c l")
+    :hook
+    ((after-change-major-mode . lsp-deferred)
+     (lsp-mode . lsp-enable-which-key-integration))
+    :commands lsp))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -171,7 +183,8 @@
   (bf-config--general-packages--spinner)
   (bf-config--general-packages--yasnippet)
   (bf-config--general-packages--flycheck)
-  (bf-config--general-packages--grammarly))
+  (bf-config--general-packages--grammarly)
+  (bf-config--general-packages--lsp))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
