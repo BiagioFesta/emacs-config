@@ -127,6 +127,11 @@
     :config
     (setq mc/insert-numbers-default 1)))
 
+(defun bf-config--general-packages--spinner ()
+  "Install and configure package `spinner'."
+  (use-package spinner
+    :ensure t))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -141,7 +146,8 @@
   (bf-config--general-packages--xclip)
   (bf-config--general-packages--ivy-counsel-swiper)
   (bf-config--general-packages--avy)
-  (bf-config--general-packages--multiple-cursors))
+  (bf-config--general-packages--multiple-cursors)
+  (bf-config--general-packages--spinner))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
