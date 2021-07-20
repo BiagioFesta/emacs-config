@@ -171,6 +171,12 @@
      (lsp-mode . lsp-enable-which-key-integration))
     :commands lsp))
 
+(defun bf-config--general-packages--lsp-ui ()
+  "Install and configure package `lsp-ui'."
+  (use-package lsp-ui
+    :ensure t
+    :after lsp-mode))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -191,7 +197,8 @@
   (bf-config--general-packages--flycheck)
   (bf-config--general-packages--keytar)
   (bf-config--general-packages--grammarly)
-  (bf-config--general-packages--lsp))
+  (bf-config--general-packages--lsp)
+  (bf-config--general-packages--lsp-ui))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
