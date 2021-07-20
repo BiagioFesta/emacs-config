@@ -148,10 +148,16 @@
     (setq flycheck-emacs-lisp-load-path 'inherit)
     (global-flycheck-mode)))
 
+(defun bf-config--general-packages--keytar ()
+  "Install and configure package `keytar'."
+  (use-package keytar
+    :ensure t))
+
 (defun bf-config--general-packages--grammarly ()
   "Install and configure package `grammarly'."
   (use-package grammarly
-    :ensure t))
+    :ensure t
+    :after keytar))
 
 (defun bf-config--general-packages--lsp ()
   "Install and configure package `lsp'."
@@ -183,6 +189,7 @@
   (bf-config--general-packages--spinner)
   (bf-config--general-packages--yasnippet)
   (bf-config--general-packages--flycheck)
+  (bf-config--general-packages--keytar)
   (bf-config--general-packages--grammarly)
   (bf-config--general-packages--lsp))
 
