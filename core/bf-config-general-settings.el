@@ -62,7 +62,8 @@ big buffers."
   (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
   (setq confirm-kill-emacs 'y-or-n-p)
-  (setq gc-cons-threshold (* 100 1024 1024)))
+  (setq gc-cons-threshold (* 100 1024 1024))
+  (setq sentence-end-double-space nil))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
