@@ -52,12 +52,18 @@ big buffers."
         (global-auto-revert-mode 1))
     (global-auto-revert-mode -1)))
 
+(defun bf-config--general-settings--window-split-preference ()
+  "Configure windows split policy."
+  (setq split-height-threshold nil)
+  (setq split-width-threshold bf-config-general-settings-windows-split-width-threshold))
+
 (defun bf-config--general-settings ()
   "Apply all general configuration settings."
   (bf-config--general-settings--config-backup-files)
   (bf-config--general-settings--config-big-buffers)
   (bf-config--general-settings--global-keybind)
   (bf-config--general-settings--auto-revert-mode)
+  (bf-config--general-settings--window-split-preference)
   (setq-default indent-tabs-mode nil)
   (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
