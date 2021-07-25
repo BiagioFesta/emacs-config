@@ -146,6 +146,7 @@
     :ensure t
     :init
     (setq flycheck-emacs-lisp-load-path 'inherit)
+    :config
     (global-flycheck-mode)))
 
 (defun bf-config--general-packages--keytar ()
