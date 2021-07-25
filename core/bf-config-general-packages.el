@@ -177,6 +177,12 @@
     :ensure t
     :after lsp-mode))
 
+(defun bf-config--general-packages--lsp-grammarly ()
+  "Install and configure package `lsp-grammarly'."
+  (use-package lsp-grammarly
+    :ensure t
+    :after lsp-mode))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -198,7 +204,8 @@
   (bf-config--general-packages--keytar)
   (bf-config--general-packages--grammarly)
   (bf-config--general-packages--lsp)
-  (bf-config--general-packages--lsp-ui))
+  (bf-config--general-packages--lsp-ui)
+  (bf-config--general-packages--lsp-grammarly))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
