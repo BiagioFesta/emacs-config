@@ -167,9 +167,18 @@
     :init
     (setq lsp-keymap-prefix "C-c l")
     :hook
-    ((after-change-major-mode . lsp-deferred)
+    ((text-mode . lsp-deferred)
+     (markdown-mode . lsp-deferred)
+     (c-mode . lsp-deferred)
+     (c++-mode . lsp-deferred)
+     (c++-mode . lsp-deferred)
+     (rust-mode . lsp-deferred)
+     (rustic-mode . lsp-deferred)
+     (python-mode . lsp-deferred)
+     (elisp-mode . lsp-deferred)
      (lsp-mode . lsp-enable-which-key-integration))
-    :commands lsp))
+    :commands
+    (lsp lsp-deferred)))
 
 (defun bf-config--general-packages--lsp-ui ()
   "Install and configure package `lsp-ui'."
