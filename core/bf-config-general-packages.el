@@ -187,6 +187,8 @@
      (python-mode . lsp-deferred)
      (elisp-mode . lsp-deferred)
      (lsp-mode . lsp-enable-which-key-integration))
+    :bind
+    ("C-c TAB" . lsp-format-buffer)
     :commands
     (lsp lsp-deferred)))
 
