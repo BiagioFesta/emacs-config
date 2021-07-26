@@ -47,6 +47,13 @@
   (use-package ccls
     :ensure t))
 
+(defun bf-config--prog-packages--c-cpp--google-c-style ()
+  "Install and configure package `google-c-style'."
+  (use-package google-c-style
+    :ensure t
+    :config
+    (c-add-style "Google" google-c-style)))
+
 (defun bf-config--prog-packages--rust--rustic ()
   "Install and configure package `rustic'."
   (use-package rustic
@@ -60,6 +67,7 @@
   (bf-config--prog-packages--company)
   (bf-config--prog-packages--cmake-mode)
   (bf-config--prog-packages--c-cpp--ccls)
+  (bf-config--prog-packages--c-cpp--google-c-style)
   (bf-config--prog-packages--rust--rustic))
 
 (provide 'bf-config-prog-packages)
