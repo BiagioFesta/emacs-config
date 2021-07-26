@@ -5,6 +5,11 @@
 ;;; Code:
 (require 'use-package)
 
+(defun bf-config--prog-packages--eldoc ()
+  "Install and configure package `eldoc'."
+  (use-package eldoc
+    :diminish))
+
 (defun bf-config--prog-packages--ws-butler ()
   "Install and configure package `ws-butler'."
   (use-package ws-butler
@@ -15,6 +20,7 @@
 
 (defun bf-config--prog-packages ()
   "Install and configure all programming packages."
+  (bf-config--prog-packages--eldoc)
   (bf-config--prog-packages--ws-butler))
 
 (provide 'bf-config-prog-packages)
