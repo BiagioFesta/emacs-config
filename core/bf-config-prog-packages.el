@@ -37,6 +37,11 @@
     :bind
     ("M-;" . company-complete)))
 
+(defun bf-config--prog-packages--cmake-mode ()
+  "Install and configure package `cmake-mode'."
+  (use-package cmake-mode
+    :ensure t))
+
 (defun bf-config--prog-packages--c-cpp--ccls ()
   "Install and configure package `ccls'."
   (use-package ccls
@@ -53,6 +58,7 @@
   (bf-config--prog-packages--abbrev-mode)
   (bf-config--prog-packages--ws-butler)
   (bf-config--prog-packages--company)
+  (bf-config--prog-packages--cmake-mode)
   (bf-config--prog-packages--c-cpp--ccls)
   (bf-config--prog-packages--rust--rustic))
 
