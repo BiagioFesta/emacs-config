@@ -33,11 +33,17 @@
     :bind
     ("M-;" . company-complete)))
 
+(defun bf-config--prog-packages--rust--rustic ()
+  "Install and configure package `rustic'."
+  (use-package rustic
+    :ensure t))
+
 (defun bf-config--prog-packages ()
   "Install and configure all programming packages."
   (bf-config--prog-packages--eldoc)
   (bf-config--prog-packages--ws-butler)
-  (bf-config--prog-packages--company))
+  (bf-config--prog-packages--company)
+  (bf-config--prog-packages--rust--rustic))
 
 (provide 'bf-config-prog-packages)
 ;;; bf-config-prog-packages.el ends here
