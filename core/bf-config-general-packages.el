@@ -202,6 +202,14 @@
     :ensure t
     :after lsp-mode))
 
+(defun bf-config--general-packages--expand-region ()
+  "Install and configure package `expand-region'."
+  (use-package expand-region
+    :ensure t
+    :bind
+    ("M-h" . er/expand-region)
+    ("M-H" . er/contract-region)))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -224,7 +232,8 @@
   (bf-config--general-packages--grammarly)
   (bf-config--general-packages--lsp)
   (bf-config--general-packages--lsp-ui)
-  (bf-config--general-packages--lsp-grammarly))
+  (bf-config--general-packages--lsp-grammarly)
+  (bf-config--general-packages--expand-region))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
