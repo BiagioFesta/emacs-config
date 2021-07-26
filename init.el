@@ -17,6 +17,7 @@
 (require 'bf-config-prog-settings)
 (require 'bf-config-prog-packages)
 (require 'bf-config-theme)
+(require 'bf-config-utilities)
 
 (defun bf-config--load-config ()
   "Load the entire configuration."
