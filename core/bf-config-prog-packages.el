@@ -10,6 +10,10 @@
   (use-package eldoc
     :diminish))
 
+(defun bf-config--prog-packages--abbrev-mode ()
+  "Configure the function `abbrev-mode'."
+  (add-hook 'c-mode-common-hook #'(lambda () (abbrev-mode -1))))
+
 (defun bf-config--prog-packages--ws-butler ()
   "Install and configure package `ws-butler'."
   (use-package ws-butler
@@ -46,6 +50,7 @@
 (defun bf-config--prog-packages ()
   "Install and configure all programming packages."
   (bf-config--prog-packages--eldoc)
+  (bf-config--prog-packages--abbrev-mode)
   (bf-config--prog-packages--ws-butler)
   (bf-config--prog-packages--company)
   (bf-config--prog-packages--c-cpp--ccls)
