@@ -33,6 +33,11 @@
     :bind
     ("M-;" . company-complete)))
 
+(defun bf-config--prog-packages--c-cpp--ccls ()
+  "Install and configure package `ccls'."
+  (use-package ccls
+    :ensure t))
+
 (defun bf-config--prog-packages--rust--rustic ()
   "Install and configure package `rustic'."
   (use-package rustic
@@ -43,6 +48,7 @@
   (bf-config--prog-packages--eldoc)
   (bf-config--prog-packages--ws-butler)
   (bf-config--prog-packages--company)
+  (bf-config--prog-packages--c-cpp--ccls)
   (bf-config--prog-packages--rust--rustic))
 
 (provide 'bf-config-prog-packages)
