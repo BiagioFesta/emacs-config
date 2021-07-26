@@ -17,7 +17,8 @@
     :ensure t
     :diminish
     :config
-    (which-key-mode 1)))
+    (which-key-mode 1))
+  (declare-function which-key-mode "which-key"))
 
 (defun bf-config--general-packages--undo-tree ()
   "Install and configure `undo-tree' package."
@@ -27,7 +28,8 @@
     :config
     (global-undo-tree-mode 1)
     :bind
-    ("C-c z" . undo-tree-visualize)))
+    ("C-c z" . undo-tree-visualize))
+  (declare-function global-undo-tree-mode "undo-tree"))
 
 (defun bf-config--general-packages--evil-mode ()
   "Install and configure `evil' package."
@@ -35,7 +37,8 @@
     :ensure t
     :config
     (when bf-config-general-packages-evil
-      (evil-mode 1))))
+      (evil-mode 1)))
+  (declare-function evil-mode "evil-code"))
 
 (defun bf-config--general-packages--ace-window ()
   "Install and configure `ace-window' package."
@@ -53,7 +56,8 @@
     :diminish
     :config
     (projectile-mode 1)
-    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)))
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+  (declare-function projectile-mode "projectile"))
 
 (defun bf-config--general-packages--magit ()
   "Install and configure `magit' packages."
@@ -86,7 +90,8 @@
         (progn
           (setq xclip-method 'xclip)
           (xclip-mode 1))
-      (warn "xsel program not found."))))
+      (warn "xsel program not found.")))
+  (declare-function xclip-mode "xclip"))
 
 (defun bf-config--general-packages--ivy-counsel-swiper ()
   "Install and configure packages `ivy' `counsel' and `swiper'."
@@ -97,12 +102,14 @@
     (setq ivy-count-format "(%d/%d) ")
     :config
     (ivy-mode 1))
+  (declare-function ivy-mode "ivy")
   (use-package counsel
     :ensure t
     :after ivy
     :diminish
     :config
     (counsel-mode 1))
+  (declare-function counsel-mode "ivycounsel")
   (use-package swiper
     :ensure t
     :after ivy
@@ -138,7 +145,8 @@
     :ensure t
     :diminish yas-minor-mode
     :config
-    (yas-global-mode 1)))
+    (yas-global-mode 1))
+  (declare-function yas-global-mode "yasnippet"))
 
 (defun bf-config--general-packages--flycheck ()
   "Install and configure package `flycheck'."
@@ -147,7 +155,8 @@
     :init
     (setq flycheck-emacs-lisp-load-path 'inherit)
     :config
-    (global-flycheck-mode)))
+    (global-flycheck-mode))
+  (declare-function global-flycheck-mode "flycheck"))
 
 (defun bf-config--general-packages--keytar ()
   "Install and configure package `keytar'."
