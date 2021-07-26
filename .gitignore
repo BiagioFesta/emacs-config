@@ -1,0 +1,13 @@
+elpa/
+placeholder-installed-fonts
+projectile-bookmarks.eld
+auto-save-list/
+.lsp-session-v1
+transient/
+ido.last
+eshell/
+url/
+saveplace
+recentf
+flycheck_*
+projectile.cache
