@@ -70,7 +70,8 @@ big buffers."
   (setq confirm-kill-emacs 'y-or-n-p)
   (setq gc-cons-threshold (* 100 1024 1024))
   (setq sentence-end-double-space nil)
-  (show-paren-mode 1))
+  (show-paren-mode 1)
+  (delete-selection-mode 1))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
