@@ -28,7 +28,9 @@ In accordance with the archives defined in the list
 
 (defun bf-config--packages-management--install-dependencies ()
   "Install packages needed for the configuration."
-  (let ((list-deps '(use-package)))
+  (let ((list-deps '(use-package
+		      f
+		      seq)))
     (dolist (package list-deps)
       (bf-config-install-package-if-missing package))))
 
