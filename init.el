@@ -14,6 +14,7 @@
 
 (require 'bf-config-general-settings)
 (require 'bf-config-general-packages)
+(require 'bf-config-prog-settings)
 (require 'bf-config-prog-packages)
 (require 'bf-config-theme)
 
@@ -21,6 +22,7 @@
   "Load the entire configuration."
   (bf-config--general-settings)
   (bf-config--general-packages)
+  (bf-config--prog-settings)
   (bf-config--prog-packages)
   (bf-config--theme))
 
