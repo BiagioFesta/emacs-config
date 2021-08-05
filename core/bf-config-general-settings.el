@@ -45,7 +45,8 @@ big buffers."
   "Set the global key bindings."
   (global-set-key (kbd "<f5>") 'revert-buffer)
   (global-set-key (kbd "C-\\") 'display-fill-column-indicator-mode)
-  (global-set-key (kbd "C-c \\") 'bf-config-utilities-column-indicator-at-point))
+  (global-set-key (kbd "C-c \\") 'bf-config-utilities-column-indicator-at-point)
+  (global-set-key (kbd "C-x \\") 'display-line-numbers-mode))
 
 (defun bf-config--general-settings--auto-revert-mode ()
   "Configure auto-revert minor mode."
