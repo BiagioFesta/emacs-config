@@ -30,6 +30,10 @@
 (defvar bf-config-general-settings-windows-split-width-threshold 180
   "This is going to set the variable `split-width-threshold'.")
 
+(defvar bf-config-prog-settings-c/c++-default-style "google"
+  "The default c-style for `c-mode' and `c++-mode'.
+You can see a list of defined c-styles at `c-style-alist'.")
+
 (defvar bf-config-general-packages-evil nil
   "Enable evil-mode.")
 
