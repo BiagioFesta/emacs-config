@@ -15,7 +15,8 @@ It also adds this style to the list of the available c styles."
   (c-add-style "bf-style-1" bf-config--prog-settings--c-bf-style-1-description))
 
 (defun bf-config--prog-settings--set-default-c-style ()
-  "Configure the default c-styles, that is, `c-default-style' for different modes.
+  "Configure the default c-styles for different modes.
+In short, it sets the variable `c-default-style'.
 In particular, the assigned style for each mode is the following:
        - `c-mode' -> `bf-config-prog-settings-c/c++-default-style';
        - `c++-mode' -> `bf-config-prog-settings-c/c++-default-style'."
