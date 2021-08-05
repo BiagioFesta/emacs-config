@@ -5,6 +5,8 @@
 
 ;;; Code:
 (require 'bf-config-vars)
+(require 'display-fill-column-indicator)
+(require 'bf-config-utilities)
 
 (defun bf-config--general-settings--config-backup-files ()
   "Configure backup files.
@@ -41,7 +43,9 @@ big buffers."
 
 (defun bf-config--general-settings--global-keybind ()
   "Set the global key bindings."
-  (global-set-key (kbd "<f5>") 'revert-buffer))
+  (global-set-key (kbd "<f5>") 'revert-buffer)
+  (global-set-key (kbd "C-\\") 'display-fill-column-indicator-mode)
+  (global-set-key (kbd "C-c \\") 'bf-config-utilities-column-indicator-at-point))
 
 (defun bf-config--general-settings--auto-revert-mode ()
   "Configure auto-revert minor mode."
