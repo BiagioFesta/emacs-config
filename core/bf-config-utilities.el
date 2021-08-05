@@ -7,6 +7,7 @@
 (require 'f)
 (unless (require 'projectile nil 'noerror)
   (warn "`projectile' package cannot be found. Some functions might not be available."))
+(require 'display-fill-column-indicator)
 
 (defun bf-config-utilities-find-compilation-database (DIRECTORY)
   "Recursively scan  DIRECTORY in order to find the compilation database.
@@ -65,6 +66,16 @@ directory."
           (f-symlink COMPILATION-DATABASE target-db-link)
           (message (format "Link to the compilation database created: %s" target-db-link))))
     (warn "Cannot define the function `bf-create-link-to-compilation-db' because `projectile-project-root' is missing")))
+
+(defun bf-config-utilities-column-indicator-at-point (&optional COLUMN)
+  "Enable `display-fill-column-indicator-mode'.
+It set the position of the column displayed at COLUMN.
+If COLUMN is nil or if this function is called interactively, it sets the COLUMN
+at `current-column'."
+  (interactive)
+  (setq display-fill-column-indicator-column (if COLUMN COLUMN
+                                               (current-column)))
+  (display-fill-column-indicator-mode 1))
 
 (provide 'bf-config-utilities)
 ;;; bf-config-utilities.el ends here
