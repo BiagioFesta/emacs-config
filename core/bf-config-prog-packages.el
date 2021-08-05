@@ -52,7 +52,7 @@
   (use-package google-c-style
     :ensure t
     :config
-    (c-add-style "Google" google-c-style)))
+    (c-add-style "google" google-c-style)))
 
 (defun bf-config--prog-packages--rust--rustic ()
   "Install and configure package `rustic'."
