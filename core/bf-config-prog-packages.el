@@ -54,10 +54,16 @@
     :config
     (c-add-style "google" google-c-style)))
 
+(defun bf-config--prog-packages--rust--rust-mode ()
+  "Install and configure package `rust-mode'."
+  (use-package rust-mode
+    :ensure t))
+
 (defun bf-config--prog-packages--rust--rustic ()
   "Install and configure package `rustic'."
   (use-package rustic
-    :ensure t))
+    :ensure t
+    :after rust-mode))
 
 (defun bf-config--prog-packages ()
   "Install and configure all programming packages."
@@ -68,6 +74,7 @@
   (bf-config--prog-packages--cmake-mode)
   (bf-config--prog-packages--c-cpp--ccls)
   (bf-config--prog-packages--c-cpp--google-c-style)
+  (bf-config--prog-packages--rust--rust-mode)
   (bf-config--prog-packages--rust--rustic))
 
 (provide 'bf-config-prog-packages)
