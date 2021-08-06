@@ -90,7 +90,7 @@
         (progn
           (setq xclip-method 'xclip)
           (xclip-mode 1))
-      (warn "xsel program not found.")))
+      (warn "xclip program not found.")))
   (declare-function xclip-mode "xclip"))
 
 (defun bf-config--general-packages--ivy-counsel-swiper ()
