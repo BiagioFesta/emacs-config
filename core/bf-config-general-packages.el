@@ -225,6 +225,8 @@
        ivy-mode-map)))
   (use-package perspective
     :ensure t
+    :custom
+    (persp-initial-frame-name "Default")
     :config
     (persp-mode)
     (bf-config--general-packages--perspective--set-kbd))
