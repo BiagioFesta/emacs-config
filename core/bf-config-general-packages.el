@@ -228,7 +228,8 @@
     :custom
     (persp-initial-frame-name "Default")
     :config
-    (persp-mode)
+    (unless (equal persp-mode t)
+      (persp-mode))
     (bf-config--general-packages--perspective--set-kbd))
   (declare-function persp-mode "perspective")
   (declare-function bf-config--general-packages--perspective--set-kbd "bf-config-general-packages"))
