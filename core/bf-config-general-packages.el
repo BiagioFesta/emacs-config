@@ -228,7 +228,8 @@
     :config
     (persp-mode)
     (bf-config--general-packages--perspective--set-kbd))
-  (declare-function persp-mode "perspective"))
+  (declare-function persp-mode "perspective")
+  (declare-function bf-config--general-packages--perspective--set-kbd "bf-config-general-packages"))
 
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
