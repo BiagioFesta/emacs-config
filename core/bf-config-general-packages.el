@@ -212,6 +212,16 @@
     ("M-h" . er/expand-region)
     ("M-H" . er/contract-region)))
 
+(defun bf-config--general-packages--perspective ()
+  "Install and configure package `perspective'."
+  (use-package perspective
+    :ensure t
+    :config
+    (persp-mode)
+    :bind
+    ([remap ivy-switch-buffer] . persp-ivy-switch-buffer))
+  (declare-function persp-mode "perspective"))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -235,7 +245,8 @@
   (bf-config--general-packages--lsp)
   (bf-config--general-packages--lsp-ui)
   (bf-config--general-packages--lsp-grammarly)
-  (bf-config--general-packages--expand-region))
+  (bf-config--general-packages--expand-region)
+  (bf-config--general-packages--perspective))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
