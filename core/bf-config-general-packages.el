@@ -214,12 +214,18 @@
 
 (defun bf-config--general-packages--perspective ()
   "Install and configure package `perspective'."
+  (defun bf-config--general-packages--perspective--set-kbd ()
+    "Configure keybinding for `persp-mode'."
+    (when (boundp 'ivy-mode-map)
+      (substitute-key-definition
+       'ivy-switch-buffer
+       'persp-counsel-switch-buffer
+       ivy-mode-map)))
   (use-package perspective
     :ensure t
     :config
     (persp-mode)
-    :bind
-    ([remap ivy-switch-buffer] . persp-ivy-switch-buffer))
+    (bf-config--general-packages--perspective--set-kbd))
   (declare-function persp-mode "perspective"))
 
 (defun bf-config--general-packages ()
