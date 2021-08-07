@@ -219,7 +219,9 @@
     (when (boundp 'ivy-mode-map)
       (substitute-key-definition
        'ivy-switch-buffer
-       'persp-counsel-switch-buffer
+       (if (featurep 'counsel)
+           'persp-counsel-switch-buffer
+         'persp-ivy-switch-buffer)
        ivy-mode-map)))
   (use-package perspective
     :ensure t
