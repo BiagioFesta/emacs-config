@@ -16,10 +16,16 @@
   (use-package doom-themes
     :ensure t))
 
+(defun bf-config--theme--monokai-theme ()
+  "Install and configure `monokai-theme' package."
+  (use-package monokai-theme
+    :ensure t))
+
 (defun bf-config--theme ()
   "Apply theme configuration."
   (bf-config--theme--advicing-load-theme)
-  (bf-config--theme--doom-themes))
+  (bf-config--theme--doom-themes)
+  (bf-config--theme--monokai-theme))
 
 (provide 'bf-config-theme)
 ;;; bf-config-theme.el ends here
