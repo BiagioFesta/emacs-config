@@ -73,8 +73,6 @@ big buffers."
   (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
   (setq confirm-kill-emacs 'y-or-n-p)
-  (setq gc-cons-threshold (* 100 1024 1024))
-  (setq read-process-output-max (* 10 1024 1024))
   (setq sentence-end-double-space nil)
   (show-paren-mode 1)
   (delete-selection-mode 1))

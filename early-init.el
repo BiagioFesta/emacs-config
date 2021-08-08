@@ -18,7 +18,9 @@
   "Launch early-init configuration."
   (bf-config--early-init--config-bars)
   (bf-config--early-init--config-modeline)
-  (setq inhibit-startup-screen t))
+  (setq inhibit-startup-screen t)
+  (setq gc-cons-threshold (* 100 1024 1024))
+  (setq read-process-output-max (* 10 1024 1024)))
 
 (bf-config--early-init)
 ;;; early-init.el ends here
