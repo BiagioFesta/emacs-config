@@ -3,16 +3,12 @@
 ;;;   Configuration for theme.
 
 ;;; Code:
-
-(defun bf-config--theme--disable-all-active-themes ()
-  "Disable all active themes."
-  (dolist (i custom-enabled-themes)
-    (disable-theme i)))
+(require 'bf-config-utilities)
 
 (defun bf-config--theme--advicing-load-theme ()
   "Advice `load-theme' to disable all active themes before applying the new one."
   (defadvice load-theme (before disable-themes-first activate)
-    (bf-config--theme--disable-all-active-themes)))
+    (bf-disable-all-active-themes)))
 
 (defun bf-config--theme ()
   "Apply theme configuration."

@@ -8,6 +8,7 @@
 (unless (require 'projectile nil 'noerror)
   (warn "`projectile' package cannot be found. Some functions might not be available."))
 (require 'display-fill-column-indicator)
+(require 'custom)
 
 (defun bf-config-utilities-find-compilation-database (DIRECTORY)
   "Recursively scan  DIRECTORY in order to find the compilation database.
@@ -86,6 +87,12 @@ When disabled, the colum is reset to default."
           (if column column
             (default-value 'display-fill-column-indicator-column))))
   (display-fill-column-indicator-mode ARG))
+
+(defun bf-disable-all-active-themes ()
+  "Disable all active themes."
+  (interactive)
+  (dolist (theme custom-enabled-themes)
+    (disable-theme theme)))
 
 (provide 'bf-config-utilities)
 ;;; bf-config-utilities.el ends here
