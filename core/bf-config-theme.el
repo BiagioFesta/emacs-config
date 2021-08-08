@@ -25,7 +25,8 @@
   "Apply theme configuration."
   (bf-config--theme--advicing-load-theme)
   (bf-config--theme--doom-themes)
-  (bf-config--theme--monokai-theme))
+  (bf-config--theme--monokai-theme)
+  (setq indicate-buffer-boundaries t))
 
 (provide 'bf-config-theme)
 ;;; bf-config-theme.el ends here
