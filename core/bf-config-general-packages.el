@@ -25,7 +25,7 @@
   (use-package undo-tree
     :ensure t
     :diminish
-    :config
+    :init
     (global-undo-tree-mode 1)
     :bind
     ("C-c z" . undo-tree-visualize))
