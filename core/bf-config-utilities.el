@@ -9,6 +9,8 @@
   (warn "`projectile' package cannot be found. Some functions might not be available."))
 (require 'display-fill-column-indicator)
 (require 'custom)
+(require 'bf-config-vars)
+(require 'bf-config-general-packages)
 
 (defun bf-config-utilities-find-compilation-database (DIRECTORY)
   "Recursively scan  DIRECTORY in order to find the compilation database.
@@ -93,6 +95,13 @@ When disabled, the colum is reset to default."
   (interactive)
   (dolist (theme custom-enabled-themes)
     (disable-theme theme)))
+
+(defun bf-enable-evil ()
+  "Enable evil-mode with configuration.
+For more information see `bf-config--general-packages--evil-mode'."
+  (interactive)
+  (setq bf-config-general-packages-evil t)
+  (bf-config--general-packages--evil-mode))
 
 (provide 'bf-config-utilities)
 ;;; bf-config-utilities.el ends here
