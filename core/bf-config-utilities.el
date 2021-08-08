@@ -67,15 +67,25 @@ directory."
           (message (format "Link to the compilation database created: %s" target-db-link))))
     (warn "Cannot define the function `bf-create-link-to-compilation-db' because `projectile-project-root' is missing")))
 
-(defun bf-column-indicator-at-point (&optional COLUMN)
-  "Enable `display-fill-column-indicator-mode'.
-It set the position of the column displayed at COLUMN.
+(defun bf-column-indicator-at-point (ARG &optional COLUMN)
+  "Enable/Disable `display-fill-column-indicator-mode' with column margin.
+It sets the position of the margin displayed at COLUMN (using
+`display-fill-column-indicator-column').
 If COLUMN is nil or if this function is called interactively, it sets the COLUMN
-at `current-column'."
-  (interactive)
-  (setq display-fill-column-indicator-column (if COLUMN COLUMN
-                                               (current-column)))
-  (display-fill-column-indicator-mode 1))
+at `current-column'.
+
+If ARG is positive then it enables the mode, otherwise it disables.
+ARG can be `toggle' (default when call with interatvice) for toggling.
+
+When disabled, the colum is reset to default."
+  (interactive '(toggle))
+  (setq display-fill-column-indicator-column
+        (let ((column (cond ((eq ARG 'toggle) (unless (bound-and-true-p display-fill-column-indicator-mode)
+                                                (if COLUMN COLUMN (current-column))))
+                            ((> ARG 0) (if COLUMN COLUMN (current-column))))))
+          (if column column
+            (default-value 'display-fill-column-indicator-column))))
+  (display-fill-column-indicator-mode ARG))
 
 (provide 'bf-config-utilities)
 ;;; bf-config-utilities.el ends here
