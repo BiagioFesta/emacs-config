@@ -53,7 +53,8 @@
     :ensure t
     :after evil
     :config
-    (evil-collection-init))
+    (when bf-config-general-packages-evil
+      (evil-collection-init)))
   (declare-function evil-mode "evil-core")
   (declare-function evil-global-set-key "evil-core")
   (declare-function evil-collection-init "evil-collection"))
