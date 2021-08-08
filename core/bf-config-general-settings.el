@@ -62,6 +62,16 @@ big buffers."
   (setq split-height-threshold nil)
   (setq split-width-threshold bf-config-general-settings-windows-split-width-threshold))
 
+(defun bf-config--general-settings--message-emacs-startup-perf ()
+  "Message with Emacs startup performance information."
+  (message "*** Emacs loaded in %s with %d garbage collections."
+           (format "%.2f seconds" (float-time (time-subtract after-init-time before-init-time)))
+           gcs-done))
+
+(defun bf-config--general-settings--config-emacs-startup ()
+  "Configure actions at Emacs startup using hook `emacs-startup-hook'."
+  (add-hook 'emacs-startup-hook 'bf-config--general-settings--message-emacs-startup-perf))
+
 (defun bf-config--general-settings ()
   "Apply all general configuration settings."
   (bf-config--general-settings--config-backup-files)
@@ -69,6 +79,7 @@ big buffers."
   (bf-config--general-settings--global-keybind)
   (bf-config--general-settings--auto-revert-mode)
   (bf-config--general-settings--window-split-preference)
+  (bf-config--general-settings--config-emacs-startup)
   (setq-default indent-tabs-mode nil)
   (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
