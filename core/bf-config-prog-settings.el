@@ -5,6 +5,7 @@
 ;;; Code:
 (require 'bf-config-vars)
 (require 'cc-vars)
+(require 'gdb-mi)
 
 (defun bf-config--prog-settings---define-c-bf-style-1 ()
   "Define C/C++ style description: bf-style-1.
@@ -27,7 +28,8 @@ In particular, the assigned style for each mode is the following:
   "Apply all programming configuration settings."
   (bf-config--prog-settings---define-c-bf-style-1)
   (bf-config--prog-settings--set-default-c-style)
-  (setq-default indent-tabs-mode nil))
+  (setq-default indent-tabs-mode nil)
+  (setq gdb-display-io-nopopup t))
 
 (provide 'bf-config-prog-settings)
 ;;; bf-config-prog-settings.el ends here
