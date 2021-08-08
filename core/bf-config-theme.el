@@ -26,7 +26,7 @@
   (bf-config--theme--advicing-load-theme)
   (bf-config--theme--doom-themes)
   (bf-config--theme--monokai-theme)
-  (setq indicate-buffer-boundaries t))
+  (setq-default indicate-buffer-boundaries t))
 
 (provide 'bf-config-theme)
 ;;; bf-config-theme.el ends here
