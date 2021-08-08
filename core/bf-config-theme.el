@@ -11,9 +11,15 @@
     "Invoke `bf-disable-all-active-themes' in order to disable active themes."
     (bf-disable-all-active-themes)))
 
+(defun bf-config--theme--doom-themes ()
+  "Install and configure `doom-themes' package."
+  (use-package doom-themes
+    :ensure t))
+
 (defun bf-config--theme ()
   "Apply theme configuration."
-  (bf-config--theme--advicing-load-theme))
+  (bf-config--theme--advicing-load-theme)
+  (bf-config--theme--doom-themes))
 
 (provide 'bf-config-theme)
 ;;; bf-config-theme.el ends here
