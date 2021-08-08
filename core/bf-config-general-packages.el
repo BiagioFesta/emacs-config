@@ -39,13 +39,13 @@
     (when bf-config-general-packages-evil
       (dolist (key '("<left>" "<right>" "<down>" "<up>"))
         (dolist (state '(motion normal))
-          (evil-global-set-key state (kbd key) 'bf-config--general-packages--evil-mode--arrow-error-message)))
+          (evil-global-set-key state (kbd key) '--bf-config--general-packages--evil-mode--arrow-error-message)))
       (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
       (evil-mode 1))
     :custom
     (evil-want-keybinding nil)
     (evil-undo-system 'undo-tree))
-  (defun bf-config--general-packages--evil-mode--arrow-error-message ()
+  (defun --bf-config--general-packages--evil-mode--arrow-error-message ()
     "Simply display a message asking you to not using arrows."
     (interactive)
     (message "Arrow keys are bad!"))
