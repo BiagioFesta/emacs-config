@@ -67,7 +67,7 @@ directory."
           (message (format "Link to the compilation database created: %s" target-db-link))))
     (warn "Cannot define the function `bf-create-link-to-compilation-db' because `projectile-project-root' is missing")))
 
-(defun bf-config-utilities-column-indicator-at-point (&optional COLUMN)
+(defun bf-column-indicator-at-point (&optional COLUMN)
   "Enable `display-fill-column-indicator-mode'.
 It set the position of the column displayed at COLUMN.
 If COLUMN is nil or if this function is called interactively, it sets the COLUMN
