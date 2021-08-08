@@ -8,6 +8,7 @@
 (defun bf-config--theme--advicing-load-theme ()
   "Advice `load-theme' to disable all active themes before applying the new one."
   (defadvice load-theme (before disable-themes-first activate)
+    "Invoke `bf-disable-all-active-themes' in order to disable active themes."
     (bf-disable-all-active-themes)))
 
 (defun bf-config--theme ()
