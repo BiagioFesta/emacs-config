@@ -37,5 +37,11 @@ You can see a list of defined c-styles at `c-style-alist'.")
 (defvar bf-config-general-packages-evil nil
   "Enable evil-mode.")
 
+(defvar bf-config-theme-with-display nil
+  "Theme to enable when graphical display is enabled.")
+
+(defvar bf-config-theme-with-console nil
+  "Theme to enable when graphical display is not enabled.")
+
 (provide 'bf-config-vars)
 ;;; bf-config-vars.el ends here

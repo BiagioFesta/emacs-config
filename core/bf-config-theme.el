@@ -4,6 +4,7 @@
 
 ;;; Code:
 (require 'bf-config-utilities)
+(require 'bf-config-vars)
 
 (defun bf-config--theme--advicing-load-theme ()
   "Advice `load-theme' to disable all active themes before applying the new one."
@@ -21,11 +22,18 @@
   (use-package monokai-theme
     :ensure t))
 
+(defun bf-config--theme--load-theme ()
+  "Load the theme in both graphical display and console mode."
+  (let ((theme (if (display-graphic-p) bf-config-theme-with-display
+                 bf-config-theme-with-console)))
+    (when theme (load-theme theme t))))
+
 (defun bf-config--theme ()
   "Apply theme configuration."
   (bf-config--theme--advicing-load-theme)
   (bf-config--theme--doom-themes)
   (bf-config--theme--monokai-theme)
+  (bf-config--theme--load-theme)
   (setq-default indicate-buffer-boundaries t))
 
 (provide 'bf-config-theme)
