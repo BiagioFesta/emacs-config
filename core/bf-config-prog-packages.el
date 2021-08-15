@@ -35,7 +35,9 @@
       (define-key company-active-map (kbd "C-n") 'company-select-next)
       (define-key company-active-map (kbd "C-p") 'company-select-previous))
     :bind
-    ("M-;" . company-complete)))
+    ("M-;" . company-complete)
+    :custom
+    (company-idle-delay nil)))
 
 (defun bf-config--prog-packages--cmake-mode ()
   "Install and configure package `cmake-mode'."
