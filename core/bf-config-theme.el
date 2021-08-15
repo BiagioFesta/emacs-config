@@ -28,12 +28,18 @@
                  bf-config-theme-with-console)))
     (when theme (load-theme theme t))))
 
+(defun bf-config--theme--set-font ()
+  "Load font in graphical display."
+  (when (and bf-config-theme-font (display-graphic-p))
+    (set-frame-font bf-config-theme-font)))
+
 (defun bf-config--theme ()
   "Apply theme configuration."
   (bf-config--theme--advicing-load-theme)
   (bf-config--theme--doom-themes)
   (bf-config--theme--monokai-theme)
   (bf-config--theme--load-theme)
+  (bf-config--theme--set-font)
   (setq-default indicate-buffer-boundaries t))
 
 (provide 'bf-config-theme)

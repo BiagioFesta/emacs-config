@@ -43,5 +43,8 @@ You can see a list of defined c-styles at `c-style-alist'.")
 (defvar bf-config-theme-with-console nil
   "Theme to enable when graphical display is not enabled.")
 
+(defvar bf-config-theme-font nil
+  "Font to set when graphical display is enabled.")
+
 (provide 'bf-config-vars)
 ;;; bf-config-vars.el ends here
