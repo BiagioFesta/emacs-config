@@ -207,7 +207,8 @@
      (elisp-mode . lsp-deferred)
      (lsp-mode . lsp-enable-which-key-integration))
     :bind
-    ("C-c TAB" . lsp-format-buffer)
+    (("C-c TAB" . lsp-format-buffer)
+     ("C-c /" . lsp-find-references))
     :commands
     (lsp lsp-deferred)))
 
@@ -215,7 +216,9 @@
   "Install and configure package `lsp-ui'."
   (use-package lsp-ui
     :ensure t
-    :after lsp-mode))
+    :after lsp-mode
+    :bind
+    ("C-x /" . lsp-ui-peek-find-references)))
 
 (defun bf-config--general-packages--lsp-grammarly ()
   "Install and configure package `lsp-grammarly'."
