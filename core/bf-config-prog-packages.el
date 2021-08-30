@@ -67,6 +67,11 @@
     :ensure t
     :after rust-mode))
 
+(defun bf-config--prog-packages--protobuf-mode ()
+  "Install and configure package `protobuf-mode'."
+  (use-package protobuf-mode
+    :ensure t))
+
 (defun bf-config--prog-packages ()
   "Install and configure all programming packages."
   (bf-config--prog-packages--eldoc)
@@ -77,7 +82,8 @@
   (bf-config--prog-packages--c-cpp--ccls)
   (bf-config--prog-packages--c-cpp--google-c-style)
   (bf-config--prog-packages--rust--rust-mode)
-  (bf-config--prog-packages--rust--rustic))
+  (bf-config--prog-packages--rust--rustic)
+  (bf-config--prog-packages--protobuf-mode))
 
 (provide 'bf-config-prog-packages)
 ;;; bf-config-prog-packages.el ends here
