@@ -256,6 +256,16 @@
   (declare-function persp-mode "perspective")
   (declare-function bf-config--general-packages--perspective--set-kbd "bf-config-general-packages"))
 
+(defun bf-config--general-packages--shackle ()
+  "Install and configure package `shackle'."
+  (use-package shackle
+    :ensure t
+    :init
+    (setq shackle-rules '(("\\`\\*e?shell" :regexp t :other t :popup t)))
+    :config
+    (shackle-mode 1))
+  (declare-function shackle-mode "shackle"))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -280,7 +290,8 @@
   (bf-config--general-packages--lsp-ui)
   (bf-config--general-packages--lsp-grammarly)
   (bf-config--general-packages--expand-region)
-  (bf-config--general-packages--perspective))
+  (bf-config--general-packages--perspective)
+  (bf-config--general-packages--shackle))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
