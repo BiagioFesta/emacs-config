@@ -266,6 +266,15 @@
     (shackle-mode 1))
   (declare-function shackle-mode "shackle"))
 
+(defun bf-config--general-packages--exec-path-from-shell ()
+  "Install and configure package `exec-path-from-shell'."
+  (use-package exec-path-from-shell
+    :ensure t
+    :config
+    (when (daemonp)
+      (exec-path-from-shell-initialize)))
+  (declare-function exec-path-from-shell-initialize "exec-path-from-shell"))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -291,7 +300,8 @@
   (bf-config--general-packages--lsp-grammarly)
   (bf-config--general-packages--expand-region)
   (bf-config--general-packages--perspective)
-  (bf-config--general-packages--shackle))
+  (bf-config--general-packages--shackle)
+  (bf-config--general-packages--exec-path-from-shell))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
