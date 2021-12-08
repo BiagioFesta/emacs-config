@@ -275,6 +275,14 @@
       (exec-path-from-shell-initialize)))
   (declare-function exec-path-from-shell-initialize "exec-path-from-shell"))
 
+(defun bf-config--general-packages--ivy-rich ()
+  "Install and configure package `ivy-rich'."
+  (use-package ivy-rich
+    :ensure t
+    :config
+    (ivy-rich-mode))
+  (declare-function ivy-rich-mode "ivy-rich"))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -301,7 +309,8 @@
   (bf-config--general-packages--expand-region)
   (bf-config--general-packages--perspective)
   (bf-config--general-packages--shackle)
-  (bf-config--general-packages--exec-path-from-shell))
+  (bf-config--general-packages--exec-path-from-shell)
+  (bf-config--general-packages--ivy-rich))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
