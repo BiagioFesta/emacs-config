@@ -86,7 +86,8 @@ big buffers."
   (setq confirm-kill-emacs 'y-or-n-p)
   (setq sentence-end-double-space nil)
   (show-paren-mode 1)
-  (delete-selection-mode 1))
+  (delete-selection-mode 1)
+  (set-default-coding-systems 'utf-8))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
