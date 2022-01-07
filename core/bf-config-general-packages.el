@@ -261,7 +261,8 @@
   (use-package shackle
     :ensure t
     :init
-    (setq shackle-rules '(("\\`\\*e?shell" :regexp t :other t :popup t)))
+    (setq shackle-rules '(("\\`\\*e?shell" :regexp t :other t :popup t)
+                          ("magit: *" :regexp t :other t :popup t)))
     :config
     (shackle-mode 1))
   (declare-function shackle-mode "shackle"))
