@@ -196,10 +196,10 @@
     :init
     (setq lsp-keymap-prefix "C-c l")
     :hook
-    ((text-mode . lsp-deferred)
+    (((c-mode c++-mode) . (lambda () (setq-default lsp-lens-enable nil)))
+     (text-mode . lsp-deferred)
      (markdown-mode . lsp-deferred)
      (c-mode . lsp-deferred)
-     (c++-mode . lsp-deferred)
      (c++-mode . lsp-deferred)
      (rust-mode . lsp-deferred)
      (rustic-mode . lsp-deferred)
