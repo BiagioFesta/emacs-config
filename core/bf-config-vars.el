@@ -37,6 +37,10 @@ You can see a list of defined c-styles at `c-style-alist'.")
 (defvar bf-config-general-packages-evil nil
   "Enable evil-mode.")
 
+(defvar bf-config-general-packages-project-ignore-regex '(".*\\.cargo/.*"
+                                                          ".*\\.rustup/.*")
+  "List of regex for ignoring `projectile-known-projects'.")
+
 (defvar bf-config-theme-with-display nil
   "Theme to enable when graphical display is enabled.")
 

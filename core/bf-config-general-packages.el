@@ -5,6 +5,7 @@
 ;;; Code:
 (require 'use-package)
 (require 'bf-config-vars)
+(require 'cl-lib)
 
 (defun bf-config--general-packages--dimish ()
   "Install and configure `dimish' package."
@@ -70,9 +71,15 @@
 
 (defun bf-config--general-packages--projectile ()
   "Install and configure `projectile' package."
+  (defun bf-config--general-packages--projectile--ignored-project-function (project-root)
+    (when (cl-loop for r in bf-config-general-packages-project-ignore-regex
+                   when (string-match-p r project-root) return t)
+      (message "Project `%s' ignored for `projectile-known-projects'" project-root)))
   (use-package projectile
     :ensure t
     :diminish
+    :init
+    (setq projectile-ignored-project-function 'bf-config--general-packages--projectile--ignored-project-function)
     :config
     (projectile-mode 1)
     (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
