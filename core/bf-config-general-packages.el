@@ -296,6 +296,11 @@
   (use-package json-mode
     :ensure))
 
+(defun bf-config--general-packages--dockerfile-mode ()
+  "Install and configure package `dockerfile-mode'."
+  (use-package dockerfile-mode
+    :ensure))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -324,7 +329,8 @@
   (bf-config--general-packages--shackle)
   (bf-config--general-packages--exec-path-from-shell)
   (bf-config--general-packages--ivy-rich)
-  (bf-config--general-packages--json-mode))
+  (bf-config--general-packages--json-mode)
+  (bf-config--general-packages--dockerfile-mode))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
