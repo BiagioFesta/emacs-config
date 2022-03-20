@@ -291,6 +291,11 @@
     (ivy-rich-mode))
   (declare-function ivy-rich-mode "ivy-rich"))
 
+(defun bf-config--general-packages--json-mode ()
+  "Install and configure package `json-mode'."
+  (use-package json-mode
+    :ensure))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -318,7 +323,8 @@
   (bf-config--general-packages--perspective)
   (bf-config--general-packages--shackle)
   (bf-config--general-packages--exec-path-from-shell)
-  (bf-config--general-packages--ivy-rich))
+  (bf-config--general-packages--ivy-rich)
+  (bf-config--general-packages--json-mode))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
