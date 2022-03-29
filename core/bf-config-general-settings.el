@@ -72,6 +72,11 @@ big buffers."
   "Configure actions at Emacs startup using hook `emacs-startup-hook'."
   (add-hook 'emacs-startup-hook 'bf-config--general-settings--message-emacs-startup-perf))
 
+(defun bf-config--general-settings--custom-file ()
+  "Configure and load Custom."
+  (setq custom-file (locate-user-emacs-file "custom-vars.el"))
+  (load custom-file 'noerror 'nomessage))
+
 (defun bf-config--general-settings ()
   "Apply all general configuration settings."
   (bf-config--general-settings--config-backup-files)
@@ -80,6 +85,7 @@ big buffers."
   (bf-config--general-settings--auto-revert-mode)
   (bf-config--general-settings--window-split-preference)
   (bf-config--general-settings--config-emacs-startup)
+  (bf-config--general-settings--custom-file)
   (setq-default indent-tabs-mode nil)
   (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
