@@ -26,6 +26,8 @@
   (use-package undo-tree
     :ensure t
     :diminish
+    :config
+    (setq undo-tree-auto-save-history nil)
     :init
     (global-undo-tree-mode 1)
     :bind
