@@ -84,7 +84,8 @@
     (setq projectile-ignored-project-function 'bf-config--general-packages--projectile--ignored-project-function)
     :config
     (projectile-mode 1)
-    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map))
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+    (setq projectile-use-git-grep t))
   (declare-function projectile-mode "projectile"))
 
 (defun bf-config--general-packages--magit ()
