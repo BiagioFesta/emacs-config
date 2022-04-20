@@ -72,6 +72,11 @@
   (use-package protobuf-mode
     :ensure t))
 
+(defun bf-config--prog-packages--rust-playground ()
+  "Install and configure package `rust-playground'."
+  (use-package rust-playground
+    :ensure t))
+
 (defun bf-config--prog-packages ()
   "Install and configure all programming packages."
   (bf-config--prog-packages--eldoc)
@@ -83,7 +88,8 @@
   (bf-config--prog-packages--c-cpp--google-c-style)
   (bf-config--prog-packages--rust--rust-mode)
   (bf-config--prog-packages--rust--rustic)
-  (bf-config--prog-packages--protobuf-mode))
+  (bf-config--prog-packages--protobuf-mode)
+  (bf-config--prog-packages--rust-playground))
 
 (provide 'bf-config-prog-packages)
 ;;; bf-config-prog-packages.el ends here
