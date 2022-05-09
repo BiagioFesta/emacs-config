@@ -259,6 +259,7 @@
     :ensure t
     :custom
     (persp-initial-frame-name "Default")
+    (persp-mode-prefix-key (kbd "C-x x"))
     :config
     (unless (equal persp-mode t)
       (persp-mode))
