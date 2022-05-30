@@ -66,6 +66,8 @@
   "Install and configure `ace-window' package."
   (use-package ace-window
     :ensure t
+    :config
+    (set-face-attribute 'aw-leading-char-face nil :height 400)
     :init
     (setq aw-ignore-current t)
     :bind
