@@ -60,7 +60,19 @@ big buffers."
 (defun bf-config--general-settings--window-split-preference ()
   "Configure windows split policy."
   (setq split-height-threshold nil)
-  (setq split-width-threshold bf-config-general-settings-windows-split-width-threshold))
+  (setq split-width-threshold bf-config-general-settings-windows-split-width-threshold)
+
+  (defun bf-config--general-settings--dont-split-more-than-two (WINDOW &optional HORIZONTAL)
+    "Advice for `window-splittable-p'.
+It prevents horizontal splitting when more than 2 windows are shown
+in that frame."
+    (if (and HORIZONTAL (>= (length (window-list (window-frame WINDOW))) 2))
+        nil
+      t))
+  (declare-function bf-config--general-settings--dont-split-more-than-two "bf-config-general-settings")
+
+  (advice-add 'window-splittable-p :before-while
+              #'bf-config--general-settings--dont-split-more-than-two))
 
 (defun bf-config--general-settings--message-emacs-startup-perf ()
   "Message with Emacs startup performance information."
