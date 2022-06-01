@@ -307,6 +307,16 @@
   (use-package dockerfile-mode
     :ensure t))
 
+(defun bf-config--general-packages--golden-ratio ()
+  "Install and configure package `golden-ratio'."
+  (use-package golden-ratio
+    :ensure t
+    :config
+    (add-to-list 'golden-ratio-extra-commands 'ace-window)
+    :init
+    (golden-ratio-mode))
+  (declare-function golden-ratio-mode "golden-ratio"))
+
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
   (bf-config--general-packages--dimish)
@@ -336,7 +346,8 @@
   (bf-config--general-packages--exec-path-from-shell)
   (bf-config--general-packages--ivy-rich)
   (bf-config--general-packages--json-mode)
-  (bf-config--general-packages--dockerfile-mode))
+  (bf-config--general-packages--dockerfile-mode)
+  (bf-config--general-packages--golden-ratio))
 
 (provide 'bf-config-general-packages)
 ;;; bf-config-general-packages.el ends here
