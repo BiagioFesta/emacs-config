@@ -300,12 +300,12 @@
 (defun bf-config--general-packages--json-mode ()
   "Install and configure package `json-mode'."
   (use-package json-mode
-    :ensure))
+    :ensure t))
 
 (defun bf-config--general-packages--dockerfile-mode ()
   "Install and configure package `dockerfile-mode'."
   (use-package dockerfile-mode
-    :ensure))
+    :ensure t))
 
 (defun bf-config--general-packages ()
   "Install and configure all general packages."
