@@ -33,6 +33,14 @@
   (when (and bf-config-theme-font (display-graphic-p))
     (set-frame-font bf-config-theme-font)))
 
+(defun bf-config--theme--no-bg-daemon-terminal ()
+  "Setup hooks for disabling background color when launch Emacs
+within a daemon-terminal."
+  (defun bf-config--theme--no-bg-daemon-terminal--impl (FRAME)
+    (when (and (daemonp) (not (display-graphic-p)))
+      (set-face-background 'default "unspecified-bg" FRAME)))
+  (add-hook 'after-make-frame-functions 'bf-config--theme--no-bg-daemon-terminal--impl))
+
 (defun bf-config--theme ()
   "Apply theme configuration."
   (bf-config--theme--advicing-load-theme)
@@ -40,6 +48,7 @@
   (bf-config--theme--monokai-theme)
   (bf-config--theme--load-theme)
   (bf-config--theme--set-font)
+  (bf-config--theme--no-bg-daemon-terminal)
   (setq-default indicate-buffer-boundaries t))
 
 (provide 'bf-config-theme)
