@@ -311,8 +311,10 @@
   "Install and configure package `golden-ratio'."
   (use-package golden-ratio
     :ensure t
+    :after (ace-window magit)
     :config
     (add-to-list 'golden-ratio-extra-commands 'ace-window)
+    (add-to-list 'golden-ratio-extra-commands 'magit-status)
     :init
     (golden-ratio-mode))
   (declare-function golden-ratio-mode "golden-ratio"))
