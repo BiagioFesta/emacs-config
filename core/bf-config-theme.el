@@ -34,8 +34,7 @@
     (set-frame-font bf-config-theme-font)))
 
 (defun bf-config--theme--no-bg-daemon-terminal ()
-  "Setup hooks for disabling background color when launch Emacs
-within a daemon-terminal."
+  "Setup hooks for disabling background color when daemon and terminal."
   (defun bf-config--theme--no-bg-daemon-terminal--impl (FRAME)
     (when (and (daemonp) (not (display-graphic-p)))
       (set-face-background 'default "unspecified-bg" FRAME)))
