@@ -155,6 +155,7 @@
     :diminish
     :config
     (setq avy-background t)
+    (setq avy-timeout-seconds nil)
     :bind
     ("C-c C-SPC" . avy-goto-char-timer)))
 
