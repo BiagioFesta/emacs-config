@@ -30,6 +30,10 @@
 (defvar bf-config-general-settings-windows-split-width-threshold 180
   "This is going to set the variable `split-width-threshold'.")
 
+(defvar bf-config-general-settings-quick-file nil
+  "Path to a local file which might be open with a shortcut.
+This should be a filename used as argument for the function call `find-file'.")
+
 (defvar bf-config-prog-settings-c/c++-default-style "google"
   "The default c-style for `c-mode' and `c++-mode'.
 You can see a list of defined c-styles at `c-style-alist'.")

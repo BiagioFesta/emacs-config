@@ -89,6 +89,16 @@ in that frame."
   (setq custom-file (locate-user-emacs-file "custom-vars.el"))
   (load custom-file 'noerror 'nomessage))
 
+(defun bf-config--general-settings--quick-file ()
+  "Configure quick-file.
+If variable `bf-config-general-settings-quick-file' is not nil the global
+keybind `C-c d' will open that file."
+  (when bf-config-general-settings-quick-file
+    (global-set-key (kbd "C-c d")
+                    (lambda ()
+                      (interactive)
+                      (find-file bf-config-general-settings-quick-file)))))
+
 (defun bf-config--general-settings ()
   "Apply all general configuration settings."
   (bf-config--general-settings--config-backup-files)
@@ -98,6 +108,7 @@ in that frame."
   (bf-config--general-settings--window-split-preference)
   (bf-config--general-settings--config-emacs-startup)
   (bf-config--general-settings--custom-file)
+  (bf-config--general-settings--quick-file)
   (setq-default indent-tabs-mode nil)
   (setq ring-bell-function 'ignore)
   (setq enable-recursive-minibuffers t)
