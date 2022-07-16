@@ -118,7 +118,9 @@ keybind `C-c d' will open that file."
   (delete-selection-mode 1)
   (set-default-coding-systems 'utf-8)
   (setq native-comp-async-report-warnings-errors 'silent)
-  (setq vc-follow-symlinks t))
+  (setq vc-follow-symlinks t)
+  (setq-default require-final-newline t)
+  (setq-default mode-require-final-newline t))
 
 (provide 'bf-config-general-settings)
 ;;; bf-config-general-settings.el ends here
