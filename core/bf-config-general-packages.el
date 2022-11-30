@@ -71,7 +71,8 @@
     :init
     (setq aw-ignore-current t)
     :bind
-    ([remap other-window] . ace-window)))
+    ([remap other-window] . ace-window)
+    ("M-o" . ace-window)))
 
 (defun bf-config--general-packages--projectile ()
   "Install and configure `projectile' package."
