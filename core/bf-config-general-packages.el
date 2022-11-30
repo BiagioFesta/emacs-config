@@ -6,6 +6,7 @@
 (require 'use-package)
 (require 'bf-config-vars)
 (require 'cl-lib)
+(require 'display-line-numbers)
 
 (defun bf-config--general-packages--dimish ()
   "Install and configure `dimish' package."
@@ -40,24 +41,33 @@
     :ensure t
     :config
     (when bf-config-general-packages-evil
-      (dolist (key '("<left>" "<right>" "<down>" "<up>"))
-        (dolist (state '(motion normal))
-          (evil-global-set-key state (kbd key) '--bf-config--general-packages--evil-mode--arrow-error-message)))
+      (evil-mode 1)
+
       (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-      (evil-mode 1))
+      (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+      (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+      (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+      (setq display-line-numbers-type 'relative)
+      (global-display-line-numbers-mode 1)
+
+      (dolist (mode '(Magit))
+        (add-to-list 'evil-emacs-state-modes mode)))
+
     :custom
+    (evil-want-C-u-scroll t)
+    (evil-want-C-i-jump t)
+    (evil-want-integration t)
     (evil-want-keybinding nil)
     (evil-undo-system 'undo-tree))
-  (defun --bf-config--general-packages--evil-mode--arrow-error-message ()
-    "Simply display a message asking you to not using arrows."
-    (interactive)
-    (message "Arrow keys are bad!"))
+
   (use-package evil-collection
     :ensure t
     :after evil
     :config
     (when bf-config-general-packages-evil
       (evil-collection-init)))
+
   (declare-function evil-mode "evil-core")
   (declare-function evil-global-set-key "evil-core")
   (declare-function evil-collection-init "evil-collection"))
