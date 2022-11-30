@@ -36,7 +36,7 @@
 (defun bf-config--theme--no-bg-daemon-terminal ()
   "Setup hooks for disabling background color when daemon and terminal."
   (defun bf-config--theme--no-bg-daemon-terminal--impl (FRAME)
-    (when (and (daemonp) (not (display-graphic-p)))
+    (when (and (daemonp) (not (display-graphic-p FRAME)))
       (set-face-background 'default "unspecified-bg" FRAME)))
   (add-hook 'after-make-frame-functions 'bf-config--theme--no-bg-daemon-terminal--impl))
 
