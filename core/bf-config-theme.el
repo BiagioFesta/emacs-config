@@ -33,12 +33,19 @@
   (when (and bf-config-theme-font (display-graphic-p))
     (set-frame-font bf-config-theme-font)))
 
-(defun bf-config--theme--no-bg-daemon-terminal ()
-  "Setup hooks for disabling background color when daemon and terminal."
-  (defun bf-config--theme--no-bg-daemon-terminal--impl (FRAME)
-    (when (and (daemonp) (not (display-graphic-p FRAME)))
+(defun bf-config--theme--daemon ()
+  "Setup theme when running Emacs as daemon."
+
+  (defun bf-config--theme--daemon--terminal-no-bg (FRAME)
+    (unless (display-graphic-p FRAME)
       (set-face-background 'default "unspecified-bg" FRAME)))
-  (add-hook 'after-make-frame-functions 'bf-config--theme--no-bg-daemon-terminal--impl))
+
+  (defun bf-config--theme--daemon--gui-set-font (FRAME)
+    (when (display-graphic-p FRAME)
+      (set-frame-font bf-config-theme-font nil (list FRAME))))
+
+  (add-hook 'after-make-frame-functions 'bf-config--theme--daemon--terminal-no-bg)
+  (add-hook 'after-make-frame-functions 'bf-config--theme--daemon--gui-set-font))
 
 (defun bf-config--theme ()
   "Apply theme configuration."
@@ -47,7 +54,7 @@
   (bf-config--theme--monokai-theme)
   (bf-config--theme--load-theme)
   (bf-config--theme--set-font)
-  (bf-config--theme--no-bg-daemon-terminal)
+  (bf-config--theme--daemon)
   (setq-default indicate-buffer-boundaries t))
 
 (provide 'bf-config-theme)
