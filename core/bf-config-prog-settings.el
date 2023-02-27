@@ -6,6 +6,7 @@
 (require 'bf-config-vars)
 (require 'cc-vars)
 (require 'gdb-mi)
+(require 'rust-mode)
 
 (defun bf-config--prog-settings---define-c-bf-style-1 ()
   "Define C/C++ style description: bf-style-1.
@@ -24,10 +25,15 @@ In particular, the assigned style for each mode is the following:
   (push (cons 'c-mode bf-config-prog-settings-c/c++-default-style) c-default-style)
   (push (cons 'c++-mode bf-config-prog-settings-c/c++-default-style) c-default-style))
 
+(defun bf-config--prog-settings--syntaxt-entries ()
+  "Modify syntaxt table for various modes."
+  (modify-syntax-entry ?_ "w" rust-mode-syntax-table))
+
 (defun bf-config--prog-settings ()
   "Apply all programming configuration settings."
   (bf-config--prog-settings---define-c-bf-style-1)
   (bf-config--prog-settings--set-default-c-style)
+  (bf-config--prog-settings--syntaxt-entries)
   (setq-default indent-tabs-mode nil)
   (setq gdb-display-io-nopopup t))
 
