@@ -59,7 +59,9 @@
 (defun bf-config--prog-packages--rust--rust-mode ()
   "Install and configure package `rust-mode'."
   (use-package rust-mode
-    :ensure t))
+    :ensure t
+    :config
+    (modify-syntax-entry ?_ "w" rust-mode-syntax-table)))
 
 (defun bf-config--prog-packages--rust--rustic ()
   "Install and configure package `rustic'."
