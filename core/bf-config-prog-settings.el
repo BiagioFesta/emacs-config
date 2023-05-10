@@ -6,6 +6,7 @@
 (require 'bf-config-vars)
 (require 'cc-vars)
 (require 'gdb-mi)
+(require 'notifications)
 
 (defun bf-config--prog-settings---define-c-bf-style-1 ()
   "Define C/C++ style description: bf-style-1.
@@ -24,10 +25,24 @@ In particular, the assigned style for each mode is the following:
   (push (cons 'c-mode bf-config-prog-settings-c/c++-default-style) c-default-style)
   (push (cons 'c++-mode bf-config-prog-settings-c/c++-default-style) c-default-style))
 
+
+(defun bf-config--prog-settings--set-compilation-notification ()
+  "Configuration notification on compilations finish."
+  (defun bf-config--prog-settings--compilation-notification-action (BUFFER STATUS)
+    "Run a notification indicating compilation has been terminated"
+    (notifications-notify
+     :title "Compilation"
+     :body (format "Result: %s" STATUS)))
+  (declare-function bf-config--prog-settings--compilation-notification-action "bf-config-prog-settings")
+
+  (when bf-config-prog-settings-notification-compilation
+    (add-to-list 'compilation-finish-functions #'bf-config--prog-settings--compilation-notification-action)))
+
 (defun bf-config--prog-settings ()
   "Apply all programming configuration settings."
   (bf-config--prog-settings---define-c-bf-style-1)
   (bf-config--prog-settings--set-default-c-style)
+  (bf-config--prog-settings--set-compilation-notification)
   (setq-default indent-tabs-mode nil)
   (setq gdb-display-io-nopopup t))
 

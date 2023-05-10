@@ -38,6 +38,9 @@ This should be a filename used as argument for the function call `find-file'.")
   "The default c-style for `c-mode' and `c++-mode'.
 You can see a list of defined c-styles at `c-style-alist'.")
 
+(defvar bf-config-prog-settings-notification-compilation t
+  "Whether to enable notification on compilation finish.")
+
 (defvar bf-config-general-packages-evil nil
   "Enable evil-mode.")
 
