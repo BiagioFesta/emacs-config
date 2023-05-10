@@ -5,6 +5,7 @@
 ;;; Code:
 (require 'seq)
 (require 'f)
+(require 'cl-lib)
 (unless (require 'projectile nil 'noerror)
   (warn "`projectile' package cannot be found. Some functions might not be available."))
 (require 'display-fill-column-indicator)
@@ -102,6 +103,37 @@ For more information see `bf-config--general-packages--evil-mode'."
   (interactive)
   (setq bf-config-general-packages-evil t)
   (bf-config--general-packages--evil-mode))
+
+(defun bf-compilation-time (BUFFER)
+  "Return the duration of a compilation (seconds).
+BUFFER is the compilation buffer.
+
+Returns nil in case of parsing error (e.g., the input buffer
+is not compilation)."
+  (with-current-buffer BUFFER
+    (save-excursion
+      (let ((time-regex-str "^.*at \\(.*\\)$")
+            (first-line (progn
+                          (goto-char (point-min))
+                          (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
+            (second-line (progn
+                           (forward-line 1)
+                           (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
+            (last-line (progn
+                         (goto-char (- (point-max) 1))
+                         (buffer-substring-no-properties (line-beginning-position) (line-end-position)))))
+
+        (let ((time-start (when (string-match time-regex-str second-line)
+                            (encode-time (append
+                                          (cl-subseq (parse-time-string (match-string 1 second-line)) 0 5)
+                                          '(0 0 0 0)))))
+              (time-end (when (string-match time-regex-str last-line)
+                          (encode-time (append
+                                        (cl-subseq (parse-time-string (match-string 1 last-line)) 0 5)
+                                        '(0 0 0 0))))))
+
+          (when (and time-start time-end)
+            (time-subtract time-end time-start)))))))
 
 (provide 'bf-config-utilities)
 ;;; bf-config-utilities.el ends here
