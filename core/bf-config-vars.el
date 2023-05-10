@@ -38,8 +38,12 @@ This should be a filename used as argument for the function call `find-file'.")
   "The default c-style for `c-mode' and `c++-mode'.
 You can see a list of defined c-styles at `c-style-alist'.")
 
-(defvar bf-config-prog-settings-notification-compilation t
-  "Whether to enable notification on compilation finish.")
+(defvar bf-config-prog-settings-notification-compilation-sec 5
+  "The minimum number of seconds a compilation task can take for notifications.
+When a compilation task takes longer than the amount of seconds a notification
+will be displayed on completion.
+
+Set to nil in order to totally disable notifications.")
 
 (defvar bf-config-general-packages-evil nil
   "Enable evil-mode.")

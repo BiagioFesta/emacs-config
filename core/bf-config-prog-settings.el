@@ -4,6 +4,7 @@
 
 ;;; Code:
 (require 'bf-config-vars)
+(require 'bf-config-utilities)
 (require 'cc-vars)
 (require 'gdb-mi)
 (require 'notifications)
@@ -30,12 +31,14 @@ In particular, the assigned style for each mode is the following:
   "Configuration notification on compilations finish."
   (defun bf-config--prog-settings--compilation-notification-action (BUFFER STATUS)
     "Run a notification indicating compilation has been terminated"
-    (notifications-notify
-     :title "Compilation"
-     :body (format "Result: %s" STATUS)))
+    (let ((comp-delta (bf-compilation-time BUFFER)))
+      (when (and comp-delta (>= comp-delta bf-config-prog-settings-notification-compilation-sec))
+        (notifications-notify
+         :title "Compilation"
+         :body (format "Result: %s" STATUS)))))
   (declare-function bf-config--prog-settings--compilation-notification-action "bf-config-prog-settings")
 
-  (when bf-config-prog-settings-notification-compilation
+  (when bf-config-prog-settings-notification-compilation-sec
     (add-to-list 'compilation-finish-functions #'bf-config--prog-settings--compilation-notification-action)))
 
 (defun bf-config--prog-settings ()
