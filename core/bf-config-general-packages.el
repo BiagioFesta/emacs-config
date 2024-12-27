@@ -241,8 +241,11 @@
   (use-package lsp-ui
     :ensure t
     :after lsp-mode
+    :custom
+    (lsp-imenu-sort-methods '(position))
     :bind
-    ("C-x /" . lsp-ui-peek-find-references)))
+    ("C-x /" . lsp-ui-peek-find-references)
+    ("M-g i" . lsp-ui-imenu)))
 
 (defun bf-config--general-packages--lsp-grammarly ()
   "Install and configure package `lsp-grammarly'."
