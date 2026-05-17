@@ -64,6 +64,8 @@
   (use-package evil-collection
     :ensure t
     :after evil
+    :init
+    (setq evil-collection-repl-submit-state 'insert)
     :config
     (when bf-config-general-packages-evil
       (evil-collection-init)))
