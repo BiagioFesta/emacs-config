@@ -56,7 +56,6 @@
 
       ;; Clipboard/kill-ring separation: kills stay internal, clipboard untouched.
       ;; Use C-S-v to paste from system clipboard.
-      (setq select-enable-clipboard nil)
       (define-key evil-normal-state-map (kbd "C-S-v") #'clipboard-yank)
       (define-key evil-insert-state-map (kbd "C-S-v") #'clipboard-yank))
 
