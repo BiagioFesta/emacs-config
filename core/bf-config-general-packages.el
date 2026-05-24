@@ -125,18 +125,6 @@
     :config
     (winner-mode 1)))
 
-(defun bf-config--general-packages--xclip ()
-  "Install and configure package `xclip'."
-  (use-package xclip
-    :ensure t
-    :config
-    (if (executable-find "xclip")
-        (progn
-          (setq xclip-method 'xclip)
-          (xclip-mode 1))
-      (warn "xclip program not found.")))
-  (declare-function xclip-mode "xclip"))
-
 (defun bf-config--general-packages--ivy-counsel-swiper ()
   "Install and configure packages `ivy' `counsel' and `swiper'."
   (use-package ivy
@@ -354,7 +342,6 @@
   (bf-config--general-packages--magit)
   (bf-config--general-packages--windmove)
   (bf-config--general-packages--winner)
-  (bf-config--general-packages--xclip)
   (bf-config--general-packages--ivy-counsel-swiper)
   (bf-config--general-packages--avy)
   (bf-config--general-packages--multiple-cursors)
